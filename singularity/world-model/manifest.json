@@ -1,0 +1,78 @@
+{
+  "schema_version": "3.0",
+  "generated_at": "2026-09-14T21:04:52.248Z",
+  "generated_date": "14 September 2026",
+  "builder_version": "2.1-light",
+  "builder_prompt_sha256": "511654826223e40b93c54f48f9b773f155e3364326d41aa98108dea7217d75cd",
+  "repository_commit": "3959741424a3d2dc89dc20a4e11613782a1eb1c8",
+  "repository_branch": "filter-app",
+  "working_tree_clean": false,
+  "generated_for_phase": null,
+  "analysis_depth": "light",
+  "source_tree_sha256": "sha256:ba49838f89b4c206776770a3370758c4b31b8f54d66bb57858ece0ae129be71e",
+  "generator": {
+    "type": "deterministic-local",
+    "model": null,
+    "model_tokens": 0
+  },
+  "core": {
+    "brief": "core/summary.brief.md",
+    "summary": "core/summary.md",
+    "model": {
+      "path": "core/model.json"
+    },
+    "tiers": {
+      "brief": {
+        "status": "ready",
+        "path": "core/summary.brief.md",
+        "bytes": 680,
+        "sha256": "e49e2a9cd4c0db56aca3c7fbee79d4a387f65ffc45fcf5ffc7ae63e0a79c3786"
+      },
+      "full": {
+        "status": "ready",
+        "path": "core/summary.md",
+        "bytes": 4091,
+        "sha256": "27244e14de39726718587044c0c727dbd05fc6712a34dfef60409d447183b38c"
+      }
+    }
+  },
+  "path_index": {
+    "path": "index/path-map.json",
+    "bytes": 2374,
+    "sha256": "0ef3e899b5944ce0740bcf4e41a82d53d47402eea9e15b39d81d293c35181748"
+  },
+  "views": {},
+  "views_generated": [],
+  "requested_views": [],
+  "domains": [],
+  "task_guides": [],
+  "evidence": {
+    "path": "evidence/evidence.jsonl",
+    "bytes": 398,
+    "sha256": "2b95a83aacfd48e46f706572666beafb4b492e34a403b8f50f88739645c899e9"
+  },
+  "generation": {
+    "parallel": false,
+    "strategy": "deterministic-light",
+    "max_workers": 0,
+    "discovery_views": [],
+    "degraded_views": [],
+    "resumed_views": [],
+    "pending_views_at_start": []
+  },
+  "materializations": [
+    {
+      "id": "light-1789419893510",
+      "generated_at": "2026-09-14T21:04:52.248Z",
+      "source_tree_sha256": "sha256:ba49838f89b4c206776770a3370758c4b31b8f54d66bb57858ece0ae129be71e",
+      "provider": null,
+      "requested": [
+        "core/brief"
+      ],
+      "produced": [
+        "core/brief"
+      ],
+      "reused": []
+    }
+  ]
+}
