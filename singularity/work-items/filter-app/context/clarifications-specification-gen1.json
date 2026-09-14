@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "workId": "filter-app",
+  "phase": "specification",
+  "generation": 1,
+  "mode": "required",
+  "promptPath": "singularity/work-items/filter-app/context/prompts/specification-gen1.md",
+  "promptSha256": "b113e0a2fa4595b68b05bd4e15a82c1a2e4117a64bc4e60a37c5e2c93d69ba44",
+  "groundingRecordPath": "singularity/work-items/filter-app/context/specification-gen1.json",
+  "groundingRecordSha256": "c1d2ac00070d5617e067db9863db3af8146171ecd27c680eb054e54cd9899252",
+  "responses": [
+    {
+      "id": "Q-001",
+      "question": "Where should the filter block appear, and what does namespace represent?",
+      "answer": "Place it on the existing rule-authoring screen. Namespace is required and represents the entity name, such as customer.",
+      "status": "answered",
+      "blocking": false
+    },
+    {
+      "id": "Q-002",
+      "question": "How should attributes be selected and ordered?",
+      "answer": "Multiple attributes may be selected and explicitly ordered; at least one attribute is required.",
+      "status": "answered",
+      "blocking": false
+    },
+    {
+      "id": "Q-003",
+      "question": "What are the filter limit modes and validation rules?",
+      "answer": "Top and bottom use a positive integer N. Range uses an inclusive positive-integer start and end, with start less than or equal to end.",
+      "status": "answered",
+      "blocking": false
+    },
+    {
+      "id": "Q-004",
+      "question": "What are the initial filter defaults?",
+      "answer": "The initial mode is top with N equal to 10.",
+      "status": "answered",
+      "blocking": false
+    },
+    {
+      "id": "Q-005",
+      "question": "What acceptance evidence is required?",
+      "answer": "Provide a screenshot at desktop viewport 1440x900 showing the filter block rendered on the existing rule-authoring page.",
+      "status": "answered",
+      "blocking": false
+    }
+  ],
+  "completed": true,
+  "recordedAt": "2026-09-14T15:39:42.912Z",
+  "recordedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "product-owner"
+}

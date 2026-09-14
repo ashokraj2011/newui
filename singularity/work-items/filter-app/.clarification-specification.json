@@ -1,0 +1,24 @@
+{
+  "responses": [
+    {
+      "question": "Where should the filter block appear, and what does namespace represent?",
+      "answer": "Place it on the existing rule-authoring screen. Namespace is required and represents the entity name, such as customer."
+    },
+    {
+      "question": "How should attributes be selected and ordered?",
+      "answer": "Multiple attributes may be selected and explicitly ordered; at least one attribute is required."
+    },
+    {
+      "question": "What are the filter limit modes and validation rules?",
+      "answer": "Top and bottom use a positive integer N. Range uses an inclusive positive-integer start and end, with start less than or equal to end."
+    },
+    {
+      "question": "What are the initial filter defaults?",
+      "answer": "The initial mode is top with N equal to 10."
+    },
+    {
+      "question": "What acceptance evidence is required?",
+      "answer": "Provide a screenshot at desktop viewport 1440x900 showing the filter block rendered on the existing rule-authoring page."
+    }
+  ]
+}

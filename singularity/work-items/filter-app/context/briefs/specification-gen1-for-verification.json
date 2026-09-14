@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "workId": "filter-app",
+  "producer": {
+    "phase": "specification",
+    "generation": 1
+  },
+  "consumer": {
+    "phase": "verification"
+  },
+  "source": {
+    "path": "singularity/work-items/filter-app/artifacts/specification/spec.md",
+    "sha256": "574a1573ff8f635cd6bf7d9e739af56b56b9f9c704aa33f13b23f36d156e8b84",
+    "bytes": 9481
+  },
+  "policy": {
+    "projection": "approved-summary",
+    "preserve": [
+      "Requirements",
+      "Non-functional requirements",
+      "Boundary conditions"
+    ],
+    "maximumSummaryBytes": 32768,
+    "expansion": "hash-bound-reference",
+    "fallback": "whole"
+  },
+  "policySha256": "9973f68aa9533ea1b0053e309fb8ce11843f6510c2d4ed64c6823d5d336c65b7",
+  "status": "ready",
+  "summary": {
+    "heading": "Agent brief"
+  },
+  "preserved": [
+    "Requirements",
+    "Non-functional requirements",
+    "Boundary conditions"
+  ],
+  "rendered": {
+    "path": "singularity/work-items/filter-app/context/briefs/specification-gen1-for-verification.md",
+    "sha256": "e22b8b63807669555520cd1ccd8d1e50df7d949339e0f2cb9d6af6b13384d47d",
+    "bytes": 3543
+  },
+  "generatedAt": "2026-09-14T15:42:13.324Z",
+  "integritySha256": "782699cdeb5df69e9f4cd55cd5000ffc3d7ea7cf8c897b68dfbf0072ce117a51"
+}

@@ -4,27 +4,51 @@
   "workId": "filter-app",
   "workType": "spec-driven-standard",
   "phase": "specification",
-  "generation": 0,
+  "generation": 1,
   "status": "in_progress",
-  "generatedBy": null,
-  "generatedAgent": null,
+  "generatedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "generatedAgent": "product-owner",
   "authorship": {
     "schemaVersion": 1,
-    "producer": "legacy-unspecified",
-    "channel": "legacy",
-    "governedAgentContext": null,
+    "producer": "governed-agent",
+    "channel": "copilot-host",
+    "actor": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    },
+    "governedAgentContext": {
+      "agentId": "product-owner"
+    },
     "kernelModel": {
       "invoked": false,
-      "status": "unavailable",
+      "status": "exact",
       "invocationIds": []
     },
     "externalAiUse": {
       "value": "unknown",
       "status": "unavailable"
     },
-    "source": null
+    "changeOrigins": [
+      "copilot"
+    ],
+    "source": {
+      "kind": "in-place",
+      "filename": "spec.md",
+      "mediaType": "text/markdown",
+      "sha256": "867a0635d53227ea1ce7a058e8a313af838049aca1e7025987c228b249fef507",
+      "bytes": 5817
+    },
+    "generation": 1,
+    "publishedAt": "2026-09-14T15:42:13.287Z"
   },
-  "sourceCommit": null,
+  "sourceCommit": "97cb7db0bb0fab1fe9e0af6d8bfd7aaf9b800cd7",
   "generationCommit": null,
   "publicationCommit": null,
   "configSha256": "50f79d34a163420256a1a15cd3cae1b93b77e0fac14f5e05152a19444766a57a",
@@ -41,10 +65,55 @@
     "approved": null
   },
   "remoteAgent": null,
-  "clarification": null,
-  "telemetry": [],
+  "clarification": {
+    "generation": 1,
+    "path": "singularity/work-items/filter-app/context/clarifications-specification-gen1.json",
+    "sha256": "caf52af1ea764fa02e0e7c160cc072ec0ed2148bffe8606da4a12c171b422c76",
+    "promptSha256": "b113e0a2fa4595b68b05bd4e15a82c1a2e4117a64bc4e60a37c5e2c93d69ba44",
+    "responses": 5,
+    "markers": [],
+    "recordedAt": "2026-09-14T15:39:42.912Z",
+    "recordedBy": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    }
+  },
+  "telemetry": [
+    {
+      "generation": 1,
+      "path": "singularity/work-items/filter-app/telemetry/specification-gen1.json",
+      "sha256": "964758b79f9f9efcb8c8c0a69d594496e48c65a0cfd0d9c4a27182389f37bbab",
+      "status": "pending",
+      "models": [],
+      "providerCost": null
+    }
+  ],
   "remoteOutputs": [],
-  "usage": [],
+  "usage": [
+    {
+      "status": "unavailable",
+      "source": "copilot-otel-unavailable",
+      "provider": null,
+      "model": null,
+      "requestedModel": null,
+      "resolvedModel": null,
+      "resolvedModelAssurance": "unavailable",
+      "inputTokens": null,
+      "outputTokens": null,
+      "cachedInputTokens": null,
+      "cacheWriteInputTokens": null,
+      "totalTokens": null,
+      "providerCost": null,
+      "costStatus": "unavailable",
+      "spans": null,
+      "startedAt": "2026-09-14T15:42:13.287Z",
+      "completedAt": "2026-09-14T15:42:13.287Z",
+      "agent": "product-owner",
+      "generation": 1
+    }
+  ],
   "sequenceOverrides": [],
   "approvals": [],
   "selfApproval": false,
@@ -54,109 +123,123 @@
 
 # Specification — filter-app
 
-<!--
-Scenarios come first, and general requirements come after them `[SPK:REQ-068]`. That ordering is the
-template's opinion: a requirement written before anyone has described the situation it serves tends
-to describe the system instead of the need, and nobody notices until verification.
-
-Where the current Story evidence leaves something material unknown, say so with a marker rather
-than guessing. Use this syntax:
-
-    [NEEDS CLARIFICATION: <one question grounded in the current Story evidence>]
-
-Replace the angle-bracketed placeholder; never copy or ask it as written. The question must be one
-non-empty line and must arise from the pinned sources, approved upstream artifacts, repository world
-model, or a contradiction among them. Markers are extracted the same way clauses are, so a marker
-inside fenced or inline code is ignored `[SPK:REQ-063]`. This phase blocks publication while any
-marker is unresolved, and a marker is only resolved when a later generation removes it *and* records
-the answer `[SPK:REQ-067]` — deleting the text alone is an integrity failure, not an answer.
--->
-
 ## Agent brief
 
-<!--
-Summarize the approved intent for downstream agents in a compact, standalone form. Include the
-problem, intended outcome, principal actors, most important scenarios, hard constraints, and major
-exclusions. Do not introduce claims that are absent from the sections below. Exact requirements and
-boundary conditions are preserved separately by the governed projection.
--->
+Add a filter block to the existing rule-authoring screen. A rule author must provide a required
+entity namespace, choose and order one or more attributes, and limit rows using top, bottom, or
+inclusive range modes. The initial mode is top with a limit of 10. The specification covers the
+authoring experience and its validation evidence; persistence beyond the existing rule-edit flow
+and unrelated rule-authoring features are excluded.
 
 ## Actors
 
-Who uses this, and what authority does each hold?
+The rule author configures filter criteria in the existing rule-authoring screen. The application
+validates the filter configuration and displays validation feedback; no additional authority model
+is introduced by this change.
 
 ## User scenarios
 
 Prioritized. Each scenario leads with the situation, then its acceptance cases.
 
-### S1 — <the most important situation, in the user's words>
+### S1 — Author a filtered rule
 
 **Priority:** P1
-**Actor:** <role>
-**Context:** <what is true before this begins>
+**Actor:** Rule author
+**Context:** The existing rule-authoring screen is open and a filter block is available.
 
-- **Given** <the starting state>
-  **When** <the actor does this>
-  **Then** <the observable outcome>
+- **Given** the rule-authoring screen is open
+  **When** the author adds or views the filter block
+  **Then** the block exposes namespace, ordered attributes, limit mode, and limit values.
 
-- **Given** <a variation worth stating>
-  **When** <…>
-  **Then** <…>
+- **Given** the filter block is empty
+  **When** the author enters an entity namespace such as `customer`, selects at least one
+  attribute, and orders the selected attributes
+  **Then** the filter accepts the complete configuration for further authoring.
 
-### S2 — <the next situation>
+### S2 — Choose a row limit
 
 **Priority:** P2
+**Actor:** Rule author
 
-- **Given** … **When** … **Then** …
+- **Given** a valid namespace and ordered attributes
+  **When** the author chooses top or bottom and enters a positive integer N
+  **Then** the filter represents the first or last N rows respectively.
+
+- **Given** a valid namespace and ordered attributes
+  **When** the author chooses range and enters positive integer start and end values where start
+  is less than or equal to end
+  **Then** the filter represents the inclusive row range.
 
 ## Failure and empty states
 
-What happens the first time, with nothing there yet, and when each step fails. These are where
-specifications are usually silent and implementations usually improvise.
-
-- **Empty:** <no records yet>
-- **Failure:** <the dependency is unavailable>
-- **Partial:** <some of it worked>
+- **Empty:** A new filter starts in top mode with N equal to 10; namespace and at least one
+  attribute remain required before the configuration is valid.
+- **Failure:** An empty namespace, no selected attributes, non-positive limit, malformed range, or
+  range with start greater than end is rejected with visible validation feedback and does not count
+  as a valid filter configuration.
+- **Partial:** Entered valid values remain visible while the invalid field is corrected.
 
 ## Permissions
 
-Who may do each thing, and what a reader without that authority sees instead.
+Any user who can access the existing rule-authoring screen may configure this filter block. This
+change does not define a new permission or alter what unauthorized readers see.
 
 ## Boundary conditions
 
-Limits, sizes, counts, timeouts, and what happens exactly at and beyond each one.
+Namespace is required and is an entity name. At least one attribute is required; multiple selected
+attributes have an explicit user-defined order. Top and bottom require a positive integer N. Range
+requires positive integer start and end values and includes both endpoints; start must be less than
+or equal to end. The initial mode is top with N equal to 10. Values outside these rules are invalid.
 
 ## Requirements
 
-Numbered, testable, one obligation each. Cite the scenario each serves.
-
-- <requirement>. *(S1)* [filter-app:REQ-001]
-- <requirement>. *(S1, S2)* [filter-app:REQ-002]
+1. The existing rule-authoring screen shall render a filter block with namespace, attribute,
+  ordering, mode, and limit controls. *(S1)* [filter-app:REQ-001]
+2. The filter shall require a non-empty namespace representing the entity being filtered. *(S1)*
+  [filter-app:REQ-002]
+3. The filter shall allow one or more attributes to be selected and explicitly ordered, and shall
+  require at least one selected attribute. *(S1)* [filter-app:REQ-003]
+4. The filter shall provide top, bottom, and range limit modes. *(S2)* [filter-app:REQ-004]
+5. Top and bottom modes shall require a positive integer N and represent the first or last N rows.
+  *(S2)* [filter-app:REQ-005]
+6. Range mode shall require positive integer start and end values, include both endpoints, and
+  require start to be less than or equal to end. *(S2)* [filter-app:REQ-006]
+7. A new filter shall default to top mode with N equal to 10. *(S1, S2)* [filter-app:REQ-007]
+8. Invalid namespace, attribute, or limit values shall produce visible validation feedback and
+  leave the filter invalid until corrected. *(S1, S2)* [filter-app:REQ-008]
 
 Acceptance criteria use the same stable, namespaced form:
 
-- <observable acceptance outcome>. *(S1)* [filter-app:AC-001]
+- The filter block is visible on the existing rule-authoring screen at desktop viewport 1440x900.
+  *(S1)* [filter-app:AC-001]
+- An empty namespace is rejected and an entity name such as `customer` is accepted. *(S1)*
+  [filter-app:AC-002]
+- One or more attributes can be selected, with multiple attributes displayed in the chosen order.
+  *(S1)* [filter-app:AC-003]
+- Top, bottom, and inclusive range modes accept valid values and reject non-positive values or a
+  range whose start is greater than its end. *(S2)* [filter-app:AC-004]
+- A newly added filter starts in top mode with N equal to 10. *(S2)* [filter-app:AC-005]
 
 ## Non-functional requirements
 
 Latency, throughput, availability, accessibility, privacy, retention. State the number and how it
 will be measured; "fast" is not a requirement.
 
-Use governed requirement anchors here too (for example `[filter-app:REQ-003]`); `NFR-001` by
-itself is only a display label and is not a stable clause identity.
+The filter block and its validation feedback shall remain usable at the required desktop viewport
+of 1440x900 without obscuring the rule-authoring controls. *(S1, S2)* [filter-app:REQ-009]
 
 ## Constitution articles
 
-Cite the article IDs this specification is bound by `[SPK:REQ-100]`. The kernel validates that each
-cited ID exists at the pinned revision before publication `[SPK:REQ-101]`.
-
-- <ART-…>
+No constitution article IDs were supplied by the governed inputs for this work item.
 
 ## Assumptions
 
-What this specification takes as true without proving. An assumption that turns out false is a
-change request, not a defect — which is only true if it was written down.
+The existing rule-authoring screen already provides the surrounding rule context and attribute
+source needed by the filter block. The requested screenshot is captured at desktop viewport
+1440x900.
 
 ## Out of scope
 
-Named explicitly, so the boundary is reviewable rather than inferred.
+Changing the existing rule-authoring navigation, adding new permissions, defining server-side query
+execution, changing unrelated rule types, or supporting viewport evidence other than the requested
+1440x900 screenshot.

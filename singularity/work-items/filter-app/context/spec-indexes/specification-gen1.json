@@ -1,0 +1,210 @@
+{
+  "clauses": [
+    {
+      "anchor": "[filter-app:REQ-001]",
+      "body": "2. The filter shall require a non-empty namespace representing the entity being filtered. *(S1)*",
+      "bodySha256": "f6960f1bfb9c7d66c2899acd1c42efbfe3b046f7ee01292b35fad473ff17f335",
+      "dependsOn": [],
+      "id": "FILTER-APP:REQ-001",
+      "namespace": "FILTER-APP",
+      "number": 1,
+      "source": {
+        "line": 197,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "REQ"
+    },
+    {
+      "anchor": "[filter-app:REQ-002]",
+      "body": "3. The filter shall allow one or more attributes to be selected and explicitly ordered, and shall\n  require at least one selected attribute. *(S1)*",
+      "bodySha256": "0aee05f35be2a5fbfe5bbf2159ec439ff019f18fda4ae65cb58591889cdedb69",
+      "dependsOn": [],
+      "id": "FILTER-APP:REQ-002",
+      "namespace": "FILTER-APP",
+      "number": 2,
+      "source": {
+        "line": 199,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "REQ"
+    },
+    {
+      "anchor": "[filter-app:REQ-003]",
+      "body": "4. The filter shall provide top, bottom, and range limit modes. *(S2)*",
+      "bodySha256": "ff35b137be384acba6a30d27cbcc3f407ef48e64fe26c1e5b3898a1ac1524b07",
+      "dependsOn": [],
+      "id": "FILTER-APP:REQ-003",
+      "namespace": "FILTER-APP",
+      "number": 3,
+      "source": {
+        "line": 201,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "REQ"
+    },
+    {
+      "anchor": "[filter-app:REQ-004]",
+      "body": "5. Top and bottom modes shall require a positive integer N and represent the first or last N rows.\n  *(S2)*",
+      "bodySha256": "eda91dbf8017bfca161f0950442ea13727fedd73bf0956e67989eaa9f6de0724",
+      "dependsOn": [],
+      "id": "FILTER-APP:REQ-004",
+      "namespace": "FILTER-APP",
+      "number": 4,
+      "source": {
+        "line": 202,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "REQ"
+    },
+    {
+      "anchor": "[filter-app:REQ-005]",
+      "body": "6. Range mode shall require positive integer start and end values, include both endpoints, and\n  require start to be less than or equal to end. *(S2)*",
+      "bodySha256": "163aa589263fb216c0ab154b32d02b5261798f1f4ff20b3a76ab3bfff294ae08",
+      "dependsOn": [],
+      "id": "FILTER-APP:REQ-005",
+      "namespace": "FILTER-APP",
+      "number": 5,
+      "source": {
+        "line": 204,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "REQ"
+    },
+    {
+      "anchor": "[filter-app:REQ-006]",
+      "body": "7. A new filter shall default to top mode with N equal to 10. *(S1, S2)*",
+      "bodySha256": "6a4df57c371de43c8cbdd2a716e689b812d73c327c26788e71c0aa9444520f83",
+      "dependsOn": [],
+      "id": "FILTER-APP:REQ-006",
+      "namespace": "FILTER-APP",
+      "number": 6,
+      "source": {
+        "line": 206,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "REQ"
+    },
+    {
+      "anchor": "[filter-app:REQ-007]",
+      "body": "8. Invalid namespace, attribute, or limit values shall produce visible validation feedback and\n  leave the filter invalid until corrected. *(S1, S2)*",
+      "bodySha256": "4e58cb1cf95b27b70d4c6f41c2b3498aff15468d92b0b7cdfd4a5e71b7621486",
+      "dependsOn": [],
+      "id": "FILTER-APP:REQ-007",
+      "namespace": "FILTER-APP",
+      "number": 7,
+      "source": {
+        "line": 207,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "REQ"
+    },
+    {
+      "anchor": "[filter-app:REQ-008]",
+      "body": "Acceptance criteria use the same stable, namespaced form:\n\n- The filter block is visible on the existing rule-authoring screen at desktop viewport 1440x900.\n  *(S1)*",
+      "bodySha256": "4e611f15561f98d359dadc605b40e6cab5b689ae9ff8b56571e6ace24c132762",
+      "dependsOn": [],
+      "id": "FILTER-APP:REQ-008",
+      "namespace": "FILTER-APP",
+      "number": 8,
+      "source": {
+        "line": 209,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "REQ"
+    },
+    {
+      "anchor": "[filter-app:AC-001]",
+      "body": "- An empty namespace is rejected and an entity name such as `customer` is accepted. *(S1)*",
+      "bodySha256": "7c1a52c5cbfe7f7ac779c431d92846acf0966fa6f36a196654bf7d666a4dbb56",
+      "dependsOn": [],
+      "id": "FILTER-APP:AC-001",
+      "namespace": "FILTER-APP",
+      "number": 1,
+      "source": {
+        "line": 214,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "AC"
+    },
+    {
+      "anchor": "[filter-app:AC-002]",
+      "body": "- One or more attributes can be selected, with multiple attributes displayed in the chosen order.\n  *(S1)*",
+      "bodySha256": "bf80abb9dba5dfc0dfd43d8cd4a21c75224855b5959cabdab3a7f4fe2dce8a8f",
+      "dependsOn": [],
+      "id": "FILTER-APP:AC-002",
+      "namespace": "FILTER-APP",
+      "number": 2,
+      "source": {
+        "line": 216,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "AC"
+    },
+    {
+      "anchor": "[filter-app:AC-003]",
+      "body": "- Top, bottom, and inclusive range modes accept valid values and reject non-positive values or a\n  range whose start is greater than its end. *(S2)*",
+      "bodySha256": "8e61267722ee17fe78178980202b41493d5b431b5ba824fee59ae11dd78d2fd0",
+      "dependsOn": [],
+      "id": "FILTER-APP:AC-003",
+      "namespace": "FILTER-APP",
+      "number": 3,
+      "source": {
+        "line": 218,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "AC"
+    },
+    {
+      "anchor": "[filter-app:AC-004]",
+      "body": "- A newly added filter starts in top mode with N equal to 10. *(S2)*",
+      "bodySha256": "f5f2df5d44e84ae16eee282ba86d522352adf01a088658038ee843d8da86796f",
+      "dependsOn": [],
+      "id": "FILTER-APP:AC-004",
+      "namespace": "FILTER-APP",
+      "number": 4,
+      "source": {
+        "line": 220,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "AC"
+    },
+    {
+      "anchor": "[filter-app:AC-005]",
+      "body": "## Non-functional requirements\n\nLatency, throughput, availability, accessibility, privacy, retention. State the number and how it\nwill be measured; \"fast\" is not a requirement.\n\nThe filter block and its validation feedback shall remain usable at the required desktop viewport\nof 1440x900 without obscuring the rule-authoring controls. *(S1, S2)*",
+      "bodySha256": "daf99436122589e8609acf1562a381646ffc7c8ca29cd1b18892f11e60c2b204",
+      "dependsOn": [],
+      "id": "FILTER-APP:AC-005",
+      "namespace": "FILTER-APP",
+      "number": 5,
+      "source": {
+        "line": 221,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "AC"
+    },
+    {
+      "anchor": "[filter-app:REQ-009]",
+      "body": "## Constitution articles\n\nNo constitution article IDs were supplied by the governed inputs for this work item.\n\n## Assumptions\n\nThe existing rule-authoring screen already provides the surrounding rule context and attribute\nsource needed by the filter block. The requested screenshot is captured at desktop viewport\n1440x900.\n\n## Out of scope\n\nChanging the existing rule-authoring navigation, adding new permissions, defining server-side query\nexecution, changing unrelated rule types, or supporting viewport evidence other than the requested\n1440x900 screenshot.",
+      "bodySha256": "edb26018c845ffac86478af0b7a031b288f2b11908c5a97b409491a1fb35d946",
+      "dependsOn": [],
+      "id": "FILTER-APP:REQ-009",
+      "namespace": "FILTER-APP",
+      "number": 9,
+      "source": {
+        "line": 229,
+        "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
+      },
+      "type": "REQ"
+    }
+  ],
+  "generation": 1,
+  "indexSha256": "e7d79ad2f88f4cee456ae3766f9c714a5ec6c927ff3e2e7bd55316f0ddf665af",
+  "phase": "specification",
+  "schemaVersion": 1,
+  "source": {
+    "bytes": 9481,
+    "path": "singularity/work-items/filter-app/artifacts/specification/spec.md",
+    "sha256": "574a1573ff8f635cd6bf7d9e739af56b56b9f9c704aa33f13b23f36d156e8b84"
+  },
+  "workId": "filter-app"
+}
