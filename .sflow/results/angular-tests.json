@@ -1,0 +1,9 @@
+{
+  "adapter": "sflow-test-result-v1",
+  "tests": {
+    "discovered": 28,
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0
+  }
+}
