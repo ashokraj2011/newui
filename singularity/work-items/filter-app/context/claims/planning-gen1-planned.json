@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 2,
+  "kind": "planned",
+  "recordedAt": "2026-09-14T17:47:41.853Z",
+  "claims": {
+    "FILTER-APP:REQ-001": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:REQ-002": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:REQ-003": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:REQ-004": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:REQ-005": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:REQ-006": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:REQ-007": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:REQ-008": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:REQ-009": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:AC-001": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:AC-002": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:AC-003": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:AC-004": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    },
+    "FILTER-APP:AC-005": {
+      "expectedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "tests": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "testDisposition": "applicable",
+      "testReason": null,
+      "deviation": null
+    }
+  },
+  "workId": "filter-app",
+  "phase": "planning",
+  "generation": 1,
+  "source": {
+    "path": "singularity/work-items/filter-app/artifacts/planning/plan.md",
+    "sha256": "8b8f37959789608d558e7d878d7a48410cc0e2d01797e6921741ef9d6f73309b",
+    "bytes": 15058
+  }
+}

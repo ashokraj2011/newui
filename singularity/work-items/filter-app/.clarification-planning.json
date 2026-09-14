@@ -1,0 +1,24 @@
+{
+  "responses": [
+    {
+      "question": "Which existing component or view should the plan target for the rule-authoring screen?",
+      "answer": "Locate the existing rule-authoring screen from repository evidence."
+    },
+    {
+      "question": "Where should the filter obtain its available attributes?",
+      "answer": "Trace the existing attribute source in the codebase and use that source."
+    },
+    {
+      "question": "Which verification evidence should the plan require?",
+      "answer": "Require screenshot evidence for the completed state at desktop viewport 1440x900."
+    },
+    {
+      "question": "What rollback boundary should planning use if implementation fails?",
+      "answer": "Revert the implementation commit only; keep the approved specification and planning artifacts."
+    },
+    {
+      "question": "Should planning include persistence or edit restoration for filter values?",
+      "answer": "No. Keep persistence beyond the existing rule-edit flow out of scope; plan the authoring UI only."
+    }
+  ]
+}
