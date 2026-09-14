@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 1,
+    "mediaType": "text/markdown",
+    "outputId": "document",
+    "path": "singularity/work-items/filter-app/artifacts/planning/plan.md",
+    "phaseId": "planning"
+  },
+  "createdAt": "2026-09-14T17:49:10.443Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "newui",
+    "origin": "https://github.com/ashokraj2011/newui.git"
+  },
+  "revision": {
+    "bytes": 15058,
+    "commitSha": "726b9c6c34ab3edfb91b95936458b5a35841375b",
+    "sha256": "8b8f37959789608d558e7d878d7a48410cc0e2d01797e6921741ef9d6f73309b"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "filter-app",
+    "id": "filter-app",
+    "kind": "story",
+    "subjectRevision": 1
+  },
+  "visibility": "model"
+}
