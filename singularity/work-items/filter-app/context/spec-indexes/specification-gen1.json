@@ -9,7 +9,7 @@
       "namespace": "FILTER-APP",
       "number": 1,
       "source": {
-        "line": 197,
+        "line": 304,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "REQ"
@@ -23,7 +23,7 @@
       "namespace": "FILTER-APP",
       "number": 2,
       "source": {
-        "line": 199,
+        "line": 306,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "REQ"
@@ -37,7 +37,7 @@
       "namespace": "FILTER-APP",
       "number": 3,
       "source": {
-        "line": 201,
+        "line": 308,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "REQ"
@@ -51,7 +51,7 @@
       "namespace": "FILTER-APP",
       "number": 4,
       "source": {
-        "line": 202,
+        "line": 309,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "REQ"
@@ -65,7 +65,7 @@
       "namespace": "FILTER-APP",
       "number": 5,
       "source": {
-        "line": 204,
+        "line": 311,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "REQ"
@@ -79,7 +79,7 @@
       "namespace": "FILTER-APP",
       "number": 6,
       "source": {
-        "line": 206,
+        "line": 313,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "REQ"
@@ -93,7 +93,7 @@
       "namespace": "FILTER-APP",
       "number": 7,
       "source": {
-        "line": 207,
+        "line": 314,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "REQ"
@@ -107,7 +107,7 @@
       "namespace": "FILTER-APP",
       "number": 8,
       "source": {
-        "line": 209,
+        "line": 316,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "REQ"
@@ -121,7 +121,7 @@
       "namespace": "FILTER-APP",
       "number": 1,
       "source": {
-        "line": 214,
+        "line": 321,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "AC"
@@ -135,7 +135,7 @@
       "namespace": "FILTER-APP",
       "number": 2,
       "source": {
-        "line": 216,
+        "line": 323,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "AC"
@@ -149,7 +149,7 @@
       "namespace": "FILTER-APP",
       "number": 3,
       "source": {
-        "line": 218,
+        "line": 325,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "AC"
@@ -163,7 +163,7 @@
       "namespace": "FILTER-APP",
       "number": 4,
       "source": {
-        "line": 220,
+        "line": 327,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "AC"
@@ -177,7 +177,7 @@
       "namespace": "FILTER-APP",
       "number": 5,
       "source": {
-        "line": 221,
+        "line": 328,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "AC"
@@ -191,20 +191,20 @@
       "namespace": "FILTER-APP",
       "number": 9,
       "source": {
-        "line": 229,
+        "line": 336,
         "path": "singularity/work-items/filter-app/artifacts/specification/spec.md"
       },
       "type": "REQ"
     }
   ],
   "generation": 1,
-  "indexSha256": "e7d79ad2f88f4cee456ae3766f9c714a5ec6c927ff3e2e7bd55316f0ddf665af",
+  "indexSha256": "8828a6db51a94d4739eaf77ad9c32aa0908bdc76d7e45eff6a93a0d392d004f6",
   "phase": "specification",
   "schemaVersion": 1,
   "source": {
-    "bytes": 9481,
+    "bytes": 14234,
     "path": "singularity/work-items/filter-app/artifacts/specification/spec.md",
-    "sha256": "574a1573ff8f635cd6bf7d9e739af56b56b9f9c704aa33f13b23f36d156e8b84"
+    "sha256": "92b97eb6b78534e8f0d025ffed049908afc988536d0bf968132d6fee2beb3c49"
   },
   "workId": "filter-app"
 }
