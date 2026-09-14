@@ -5,20 +5,23 @@
 - Capability: **newui** (`new-uix`)
 - Capability map: `b0133efb3bb348108c9069eb04d774ad8f937989b8672222a1e399e08350c2e1`
 - Overall status: **in_progress**
-- Current phase: **planning**
+- Current phase: **implementation**
 
 | # | Phase | Governed agent | Status | Generation | Approvals | Tokens |
 |---:|---|---|---|---:|---:|---:|
 | 1 | Specification (`specification`) | product-owner | **approved** | 1 | 1 | unavailable |
 |  | ⚠ self-approval | Ashok Raj via product-approvers; agent product-owner | **warning** |  |  |  |
-| 2 | Planning (`planning`) | architect | **awaiting_approval** | 1 | 0 | unavailable |
-| 3 | Implementation (`implementation`) | developer | **not_started** | 0 | 0 | unavailable |
+| 2 | Planning (`planning`) | architect | **approved** | 1 | 1 | unavailable |
+|  | ⚠ self-approval | Ashok Raj via architecture-reviewers; agent architect | **warning** |  |  |  |
+| 3 | Implementation (`implementation`) | developer | **in_progress** | 0 | 0 | unavailable |
 | 4 | Convergence (`convergence`) | architect | **not_started** | 0 | 0 | unavailable |
 | 5 | Verification (`verification`) | qa | **not_started** | 0 | 0 | unavailable |
 | 6 | Release (`release`) | qa | **not_started** | 0 | 0 | unavailable |
 
 ## Recent history
 
+- 2026-09-14T17:51:30.776Z — **work_interval_started** (implementation) by system: baseline 89a620782242 at 11819248e2dc
+- 2026-09-14T17:51:30.761Z — **phase_self_approved** (planning) by ashokraj2011 · governed agent architect: threshold reached; advanced to implementation
 - 2026-09-14T17:49:10.367Z — **phase_submitted** (planning) by ashokraj2011 · governed agent architect: 1 artifacts
 - 2026-09-14T17:47:41.896Z — **phase_generated** (planning) by ashokraj2011 · governed agent architect: generation 1
 - 2026-09-14T15:57:02.554Z — **phase_self_approved** (specification) by ashokraj2011 · governed agent product-owner: threshold reached; advanced to planning

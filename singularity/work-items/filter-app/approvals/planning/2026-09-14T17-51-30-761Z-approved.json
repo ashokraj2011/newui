@@ -1,0 +1,71 @@
+{
+  "decision": "approved",
+  "phase": "planning",
+  "at": "2026-09-14T17:51:30.761Z",
+  "actor": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "architect",
+  "authorityGroup": "architecture-reviewers",
+  "identityAssurance": "configured-local",
+  "channel": "copilot-selection-receipt",
+  "generation": 1,
+  "artifactSha256": [
+    {
+      "path": "singularity/work-items/filter-app/artifacts/planning/plan.md",
+      "sha256": "bc45071d4673f4a27b3aedfce51786cf627241cd0c24c48b67941ce5f268377b"
+    }
+  ],
+  "artifactSet": "spec-driven-planning",
+  "bundleSha256": "80a9d262eff7515ef5237a9f9355b8a1b9713f3cef1cb9eaab4dc9977b73afe0",
+  "reviewPacketSha256": "5c35bd48109384e8b49901bbd134879f84e922d4dbc99d3b6fc018cb84ed76ec",
+  "evidenceCommit": "11819248e2dcf414ba3482b61d86184abfaa5cc1",
+  "artifactSetSha256": "aaba7b7e414c7ea5600417cd8e464ac5b2c3df4fcbe2898bcb2683d9e10bc3b0",
+  "architectureIntent": null,
+  "architectureDecision": null,
+  "actionContext": {
+    "phase": "planning",
+    "label": "Planning",
+    "generation": 1,
+    "submittedAt": "2026-09-14T17:49:10.367Z",
+    "artifacts": [
+      {
+        "path": "singularity/work-items/filter-app/artifacts/planning/plan.md",
+        "sha256": "bc45071d4673f4a27b3aedfce51786cf627241cd0c24c48b67941ce5f268377b"
+      }
+    ],
+    "agentBriefs": [
+      {
+        "consumerPhase": "convergence",
+        "status": "ready",
+        "path": "singularity/work-items/filter-app/context/briefs/planning-gen1-for-convergence.json",
+        "renderedPath": "singularity/work-items/filter-app/context/briefs/planning-gen1-for-convergence.md",
+        "renderedSha256": "f408c8cba06d52b3a5caa09343e442b88a808b6060cd7bde39daee390acd9224",
+        "integritySha256": "8685469c6f4ad027df066be006a7d72e14e170041462105bf5c186ee88c45486"
+      },
+      {
+        "consumerPhase": "implementation",
+        "status": "ready",
+        "path": "singularity/work-items/filter-app/context/briefs/planning-gen1-for-implementation.json",
+        "renderedPath": "singularity/work-items/filter-app/context/briefs/planning-gen1-for-implementation.md",
+        "renderedSha256": "54695014db8273aa85276f5b953f7aa41dca823e5eaccde16c0cdab97ad18978",
+        "integritySha256": "64b7b2f5808d8fe3d6d56a83f9d2bc0af287872b6462556a0cda97992da3c7da"
+      },
+      {
+        "consumerPhase": "verification",
+        "status": "ready",
+        "path": "singularity/work-items/filter-app/context/briefs/planning-gen1-for-verification.json",
+        "renderedPath": "singularity/work-items/filter-app/context/briefs/planning-gen1-for-verification.md",
+        "renderedSha256": "aaaa7017ba95c16d561d2f673f1dc1fe11086005469be28acb62a4be6f4e075d",
+        "integritySha256": "6c757400228e0bd48abf92d715c5d5987f0432ed885852f7a3d98d8c6d87cb38"
+      }
+    ],
+    "reviewPacketSha256": "5c35bd48109384e8b49901bbd134879f84e922d4dbc99d3b6fc018cb84ed76ec",
+    "submittedSourceCommit": "726b9c6c34ab3edfb91b95936458b5a35841375b",
+    "planId": "f3cff731deb6af865880cd96"
+  },
+  "selfApproval": true
+}
