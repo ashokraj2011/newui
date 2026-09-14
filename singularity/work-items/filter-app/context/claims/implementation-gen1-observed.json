@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 2,
+  "kind": "observed",
+  "recordedAt": "2026-09-14T22:05:58.878Z",
+  "claims": {
+    "FILTER-APP:AC-001": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "matched",
+      "deviation": null
+    },
+    "FILTER-APP:AC-002": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "matched",
+      "deviation": null
+    },
+    "FILTER-APP:AC-003": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "matched",
+      "deviation": null
+    },
+    "FILTER-APP:AC-004": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "matched",
+      "deviation": null
+    },
+    "FILTER-APP:AC-005": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [
+        "src/app/components/rule-sets/rule-sets.component.spec.ts"
+      ],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "matched",
+      "deviation": null
+    },
+    "FILTER-APP:REQ-001": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "partial",
+      "deviation": null
+    },
+    "FILTER-APP:REQ-002": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "partial",
+      "deviation": null
+    },
+    "FILTER-APP:REQ-003": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "partial",
+      "deviation": null
+    },
+    "FILTER-APP:REQ-004": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "partial",
+      "deviation": null
+    },
+    "FILTER-APP:REQ-005": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "partial",
+      "deviation": null
+    },
+    "FILTER-APP:REQ-006": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "partial",
+      "deviation": null
+    },
+    "FILTER-APP:REQ-007": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "partial",
+      "deviation": null
+    },
+    "FILTER-APP:REQ-008": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "partial",
+      "deviation": null
+    },
+    "FILTER-APP:REQ-009": {
+      "observedPaths": [
+        "src/app/components/rule-sets/rule-sets.component.ts"
+      ],
+      "testResults": [],
+      "commits": [
+        "84c19230e0e099f10f1a8c94157c0ae3324bf86c"
+      ],
+      "verdict": "partial",
+      "deviation": null
+    }
+  },
+  "workId": "filter-app",
+  "phase": "implementation",
+  "generation": 1,
+  "source": {
+    "path": "singularity/work-items/filter-app/context/code-delivery/implementation-gen1.json",
+    "sha256": "ed0ddd0063c8a2f0b105de12787ca82e373073c0ce73a7320fe4e0f95fa4c139",
+    "changeSetDigest": "sha256:b569446510402e5f754d12cb85d8f4b7fb8aafb1b281e68c9248a1b5dd1ab560"
+  }
+}

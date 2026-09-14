@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 3,
+  "kind": "test-execution",
+  "commandId": "angular-tests",
+  "argvSha256": "1e7d87637a5c794e760a97f54cbf8a9df2fe7f75058e97435bb80d9b425b04d0",
+  "platform": "darwin",
+  "workingDirectory": ".",
+  "affectedRoots": [
+    "."
+  ],
+  "adapter": "karma-text",
+  "status": "passed",
+  "exitCode": 0,
+  "timedOut": false,
+  "skipped": false,
+  "suppressed": false,
+  "tests": {
+    "discovered": 28,
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0
+  },
+  "result": {
+    "path": ".sflow/results/node-tests.karma.txt",
+    "sha256": "8a485ef6fef675394e76cd30ea7fbc5799049957dcc27e9a5616805771464aab",
+    "bytes": 3809,
+    "files": [
+      {
+        "sourcePath": ".sflow/results/node-tests.karma.txt",
+        "sha256": "8a485ef6fef675394e76cd30ea7fbc5799049957dcc27e9a5616805771464aab",
+        "bytes": 3809
+      }
+    ]
+  },
+  "candidate": null,
+  "program": null,
+  "attempt": null,
+  "localExecution": null,
+  "adapterIdentity": null,
+  "testcaseObservation": {
+    "status": "unavailable",
+    "assurance": "unavailable",
+    "exact": false,
+    "verdict": "inconclusive",
+    "profile": null,
+    "parser": null,
+    "catalog": null,
+    "mappingProposals": [],
+    "occurrences": [],
+    "rawReports": [],
+    "bindingGaps": [],
+    "notice": "exact-test observation was not enrolled for this Story"
+  },
+  "assurance": "module-executed",
+  "testcaseExecutionProven": false,
+  "assuranceNotice": "module executed; tagged test execution not independently proven"
+}

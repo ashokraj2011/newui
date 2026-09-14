@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 1,
+    "mediaType": "text/markdown",
+    "outputId": "document",
+    "path": "singularity/work-items/filter-app/artifacts/implementation/implementation-summary.md",
+    "phaseId": "implementation"
+  },
+  "createdAt": "2026-09-14T22:05:59.037Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "newui",
+    "origin": "https://github.com/ashokraj2011/newui.git"
+  },
+  "revision": {
+    "bytes": 14983,
+    "commitSha": "84c19230e0e099f10f1a8c94157c0ae3324bf86c",
+    "sha256": "f682e5029fba184e893745272d92ad47ed046da4966b9aa17c37d0ec9537b1c0"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "filter-app",
+    "id": "filter-app",
+    "kind": "story",
+    "subjectRevision": 1
+  },
+  "visibility": "model"
+}

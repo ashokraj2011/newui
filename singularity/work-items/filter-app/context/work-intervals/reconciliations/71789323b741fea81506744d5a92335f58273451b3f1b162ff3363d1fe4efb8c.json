@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "work-reconciliation",
+  "workId": "filter-app",
+  "workType": "spec-driven-standard",
+  "intervalId": "INT-implementation-G1-001",
+  "phaseId": "implementation",
+  "generation": 1,
+  "baselineSha256": "89a620782242bafd07ba5db0ecb5ce454ffdcfff86e4086406cd512e0eeed89a",
+  "baseline": {
+    "path": "singularity/work-items/filter-app/context/work-intervals/implementation-gen1-baseline.json",
+    "sha256": "89a620782242bafd07ba5db0ecb5ce454ffdcfff86e4086406cd512e0eeed89a",
+    "verified": true,
+    "sourceBaseCommit": "11819248e2dcf414ba3482b61d86184abfaa5cc1"
+  },
+  "sourceBaseCommit": "11819248e2dcf414ba3482b61d86184abfaa5cc1",
+  "target": {
+    "branch": "filter-app",
+    "head": "84c19230e0e099f10f1a8c94157c0ae3324bf86c",
+    "includesWorktree": false,
+    "cleanApplicationTree": true,
+    "uncommittedApplicationPaths": []
+  },
+  "findings": [
+    {
+      "path": "scripts/run-angular-tests.mjs",
+      "status": "present",
+      "sha256": "87eac305c2ac787c9e6b0f1b0fea67af0c7a170cbc2dde64d64619176c0a26d9",
+      "bytes": 1095,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    },
+    {
+      "path": "src/app/components/rule-sets/rule-sets.component.spec.ts",
+      "status": "present",
+      "sha256": "adc3457f380c8843899c51d4d3155839f94ec306f29706fb8a91252d97fd3469",
+      "bytes": 2753,
+      "verdict": "planned",
+      "clauseIds": [
+        "FILTER-APP:AC-001",
+        "FILTER-APP:AC-002",
+        "FILTER-APP:AC-003",
+        "FILTER-APP:AC-004",
+        "FILTER-APP:AC-005",
+        "FILTER-APP:REQ-001",
+        "FILTER-APP:REQ-002",
+        "FILTER-APP:REQ-003",
+        "FILTER-APP:REQ-004",
+        "FILTER-APP:REQ-005",
+        "FILTER-APP:REQ-006",
+        "FILTER-APP:REQ-007",
+        "FILTER-APP:REQ-008",
+        "FILTER-APP:REQ-009"
+      ],
+      "protected": false
+    },
+    {
+      "path": "src/app/components/rule-sets/rule-sets.component.ts",
+      "status": "present",
+      "sha256": "57f34dfadf76d0144b0e5134b48d7b89c596218ba85f347a452c409fb1142c77",
+      "bytes": 52017,
+      "verdict": "planned",
+      "clauseIds": [
+        "FILTER-APP:AC-001",
+        "FILTER-APP:AC-002",
+        "FILTER-APP:AC-003",
+        "FILTER-APP:AC-004",
+        "FILTER-APP:AC-005",
+        "FILTER-APP:REQ-001",
+        "FILTER-APP:REQ-002",
+        "FILTER-APP:REQ-003",
+        "FILTER-APP:REQ-004",
+        "FILTER-APP:REQ-005",
+        "FILTER-APP:REQ-006",
+        "FILTER-APP:REQ-007",
+        "FILTER-APP:REQ-008",
+        "FILTER-APP:REQ-009"
+      ],
+      "protected": false
+    }
+  ],
+  "summary": {
+    "changedPaths": 3,
+    "planned": 2,
+    "unplanned": 1,
+    "protected": 0
+  },
+  "decision": {
+    "status": "review",
+    "summaryStatus": "attention",
+    "eligibleForSubmission": true,
+    "reasons": [],
+    "escalationTarget": null
+  },
+  "reconciliationSha256": "71789323b741fea81506744d5a92335f58273451b3f1b162ff3363d1fe4efb8c",
+  "reconciledAt": "2026-09-14T22:05:58.964Z",
+  "final": true,
+  "recordedAt": "2026-09-14T22:05:58.965Z",
+  "path": "singularity/work-items/filter-app/context/work-intervals/reconciliations/71789323b741fea81506744d5a92335f58273451b3f1b162ff3363d1fe4efb8c.json"
+}

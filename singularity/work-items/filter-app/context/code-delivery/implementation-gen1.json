@@ -83,35 +83,72 @@
       {
         "clauseId": "FILTER-APP:AC-001",
         "testSource": "src/app/components/rule-sets/rule-sets.component.spec.ts",
-        "bindingAssurance": "namespace-qualified"
+        "bindingAssurance": "namespace-qualified",
+        "testIdentity": null,
+        "moduleRoot": ".",
+        "commandId": "angular-tests",
+        "executionAssurance": "module-executed",
+        "testcaseExecutionProven": false,
+        "assuranceNotice": "module executed; tagged test execution not independently proven"
       },
       {
         "clauseId": "FILTER-APP:AC-002",
         "testSource": "src/app/components/rule-sets/rule-sets.component.spec.ts",
-        "bindingAssurance": "namespace-qualified"
+        "bindingAssurance": "namespace-qualified",
+        "testIdentity": null,
+        "moduleRoot": ".",
+        "commandId": "angular-tests",
+        "executionAssurance": "module-executed",
+        "testcaseExecutionProven": false,
+        "assuranceNotice": "module executed; tagged test execution not independently proven"
       },
       {
         "clauseId": "FILTER-APP:AC-003",
         "testSource": "src/app/components/rule-sets/rule-sets.component.spec.ts",
-        "bindingAssurance": "namespace-qualified"
+        "bindingAssurance": "namespace-qualified",
+        "testIdentity": null,
+        "moduleRoot": ".",
+        "commandId": "angular-tests",
+        "executionAssurance": "module-executed",
+        "testcaseExecutionProven": false,
+        "assuranceNotice": "module executed; tagged test execution not independently proven"
       },
       {
         "clauseId": "FILTER-APP:AC-004",
         "testSource": "src/app/components/rule-sets/rule-sets.component.spec.ts",
-        "bindingAssurance": "namespace-qualified"
+        "bindingAssurance": "namespace-qualified",
+        "testIdentity": null,
+        "moduleRoot": ".",
+        "commandId": "angular-tests",
+        "executionAssurance": "module-executed",
+        "testcaseExecutionProven": false,
+        "assuranceNotice": "module executed; tagged test execution not independently proven"
       },
       {
         "clauseId": "FILTER-APP:AC-005",
         "testSource": "src/app/components/rule-sets/rule-sets.component.spec.ts",
-        "bindingAssurance": "namespace-qualified"
+        "bindingAssurance": "namespace-qualified",
+        "testIdentity": null,
+        "moduleRoot": ".",
+        "commandId": "angular-tests",
+        "executionAssurance": "module-executed",
+        "testcaseExecutionProven": false,
+        "assuranceNotice": "module executed; tagged test execution not independently proven"
       }
     ]
   },
-  "testExecutions": [],
+  "testExecutions": [
+    {
+      "commandId": "angular-tests",
+      "receiptPath": "singularity/work-items/filter-app/context/code-delivery/tests/implementation-gen1-angular-tests.json",
+      "receiptSha256": "1fd26b9d245079a26e77c4c6f4c83c7235ec3f18439443a51a5e89fb9935b7c6",
+      "status": "passed"
+    }
+  ],
   "tree": {
     "workingStateDigest": "sha256:ede290f133aaf45ec36bd62c15a555003780f1721ea92e86a1f7dafaf6f979c5",
-    "generationCommit": null,
-    "generationTree": null
+    "generationCommit": "84c19230e0e099f10f1a8c94157c0ae3324bf86c",
+    "generationTree": "8aa4db69a28bfc0065e5e82d20d9efc43a6a22a7"
   },
   "model": {
     "task": "code",
@@ -130,6 +167,7 @@
     "observedAt": null,
     "generation": null
   },
-  "status": "pending-tests",
-  "capturedAt": "2026-09-14T21:39:33.097Z"
+  "status": "ready",
+  "capturedAt": "2026-09-14T21:39:33.097Z",
+  "validatedAt": "2026-09-14T22:05:58.870Z"
 }
