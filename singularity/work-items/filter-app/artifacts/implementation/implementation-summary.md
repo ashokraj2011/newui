@@ -4,27 +4,51 @@
   "workId": "filter-app",
   "workType": "spec-driven-standard",
   "phase": "implementation",
-  "generation": 0,
+  "generation": 1,
   "status": "in_progress",
-  "generatedBy": null,
-  "generatedAgent": null,
+  "generatedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "generatedAgent": "developer",
   "authorship": {
     "schemaVersion": 1,
-    "producer": "legacy-unspecified",
-    "channel": "legacy",
-    "governedAgentContext": null,
+    "producer": "governed-agent",
+    "channel": "copilot-host",
+    "actor": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    },
+    "governedAgentContext": {
+      "agentId": "developer"
+    },
     "kernelModel": {
       "invoked": false,
-      "status": "unavailable",
+      "status": "exact",
       "invocationIds": []
     },
     "externalAiUse": {
       "value": "unknown",
       "status": "unavailable"
     },
-    "source": null
+    "changeOrigins": [
+      "copilot"
+    ],
+    "source": {
+      "kind": "in-place",
+      "filename": "implementation-summary.md",
+      "mediaType": "text/markdown",
+      "sha256": "a7c9eabf517fc30dda45d7052f905ab555e4026a82946e6a1de330a22abe4f0c",
+      "bytes": 1973
+    },
+    "generation": 1,
+    "publishedAt": "2026-09-14T21:39:33.097Z"
   },
-  "sourceCommit": null,
+  "sourceCommit": "f7580ceb68618ff6741f362b8dc352b424d06357",
   "generationCommit": null,
   "publicationCommit": null,
   "configSha256": "50f79d34a163420256a1a15cd3cae1b93b77e0fac14f5e05152a19444766a57a",
@@ -38,7 +62,7 @@
   "inputs": {
     "generation": 1,
     "path": "singularity/work-items/filter-app/context/inputs-implementation-gen1.json",
-    "sha256": "57a05bd638bb0bbc67c98f4cc6f472a3298f0b53b3b9b853e959d0bee0903936",
+    "sha256": "e440962515555edc8451e8d43dff8e6f8fbae15e0653d81faa506983c159a08b",
     "renderedSha256": "50aaccd42d3a10fb2ae9a412f0085d8d0f6318a35f18ed7208485de767988736",
     "mode": "enforce"
   },
@@ -48,9 +72,40 @@
   },
   "remoteAgent": null,
   "clarification": null,
-  "telemetry": [],
+  "telemetry": [
+    {
+      "generation": 1,
+      "path": "singularity/work-items/filter-app/telemetry/implementation-gen1.json",
+      "sha256": "f9e6b60d7ebc64b3cc9a32ebba2b57d573ae38542ecdbaa5b96ad819bc697f02",
+      "status": "pending",
+      "models": [],
+      "providerCost": null
+    }
+  ],
   "remoteOutputs": [],
-  "usage": [],
+  "usage": [
+    {
+      "status": "unavailable",
+      "source": "copilot-otel-unavailable",
+      "provider": null,
+      "model": null,
+      "requestedModel": null,
+      "resolvedModel": null,
+      "resolvedModelAssurance": "unavailable",
+      "inputTokens": null,
+      "outputTokens": null,
+      "cachedInputTokens": null,
+      "cacheWriteInputTokens": null,
+      "totalTokens": null,
+      "providerCost": null,
+      "costStatus": "unavailable",
+      "spans": null,
+      "startedAt": "2026-09-14T21:39:33.096Z",
+      "completedAt": "2026-09-14T21:39:33.096Z",
+      "agent": "developer",
+      "generation": 1
+    }
+  ],
   "sequenceOverrides": [],
   "approvals": [],
   "selfApproval": false,

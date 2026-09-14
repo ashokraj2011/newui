@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "workId": "filter-app",
+  "producer": {
+    "phase": "implementation",
+    "generation": 1
+  },
+  "consumer": {
+    "phase": "convergence"
+  },
+  "source": {
+    "path": "singularity/work-items/filter-app/artifacts/implementation/implementation-summary.md",
+    "sha256": "f682e5029fba184e893745272d92ad47ed046da4966b9aa17c37d0ec9537b1c0",
+    "bytes": 14983
+  },
+  "policy": {
+    "projection": "approved-summary",
+    "preserve": [
+      "Changed components and decisions",
+      "Tests and operational notes"
+    ],
+    "maximumSummaryBytes": 24576,
+    "expansion": "hash-bound-reference",
+    "fallback": "whole"
+  },
+  "policySha256": "0f2f54d4589a3673eb27f166311f8295707a0eefd70287dbbbd5ea961a329aaf",
+  "status": "fallback-whole",
+  "summary": null,
+  "preserved": [],
+  "rendered": null,
+  "generatedAt": "2026-09-14T21:39:33.168Z",
+  "integritySha256": "a52fe1c85eb9931ae39721fbb1b9d0f75905aee8cc0ce129b138ffa9d0806369"
+}

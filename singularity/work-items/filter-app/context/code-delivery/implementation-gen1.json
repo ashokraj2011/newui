@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 2,
+  "kind": "code-delivery",
+  "workId": "filter-app",
+  "phase": "implementation",
+  "generation": 1,
+  "generationIntentId": "078a06ae-d5bd-422c-a32b-0b5a71385909",
+  "changeSet": {
+    "path": "singularity/work-items/filter-app/context/code-delivery/implementation-gen1-changes.json",
+    "digest": "sha256:b569446510402e5f754d12cb85d8f4b7fb8aafb1b281e68c9248a1b5dd1ab560",
+    "sourcePaths": [
+      "scripts/run-angular-tests.mjs",
+      "src/app/components/rule-sets/rule-sets.component.ts"
+    ],
+    "deletedSourcePaths": [],
+    "executableTestPaths": [
+      "src/app/components/rule-sets/rule-sets.component.spec.ts"
+    ],
+    "supportingTestPaths": []
+  },
+  "changeClassification": {
+    "schemaVersion": 1,
+    "inference": "path-policy",
+    "declaredOrigins": [
+      "copilot"
+    ],
+    "generatedRoots": [],
+    "counts": {
+      "product-source": 2,
+      "test-source": 1
+    },
+    "entries": [
+      {
+        "changeId": "sha256:463239790ecc734fadeb0180b759dbbd2afb5d207a178d98a3e4bc772a4e9c38",
+        "status": "added",
+        "oldPath": null,
+        "newPath": "scripts/run-angular-tests.mjs",
+        "role": "product-source",
+        "generated": false,
+        "likelyOrigin": "authorship-declared",
+        "inference": "path-policy"
+      },
+      {
+        "changeId": "sha256:b7159bd8a9a42237bbcec07fba90cf7783b81fdfb823c839da295280055366f6",
+        "status": "added",
+        "oldPath": null,
+        "newPath": "src/app/components/rule-sets/rule-sets.component.spec.ts",
+        "role": "test-source",
+        "generated": false,
+        "likelyOrigin": "authorship-declared",
+        "inference": "path-policy"
+      },
+      {
+        "changeId": "sha256:47fc65757d4f1d987f83033c309a139c23de4ee2d5d2a02961db66ef44aeea41",
+        "status": "modified",
+        "oldPath": "src/app/components/rule-sets/rule-sets.component.ts",
+        "newPath": "src/app/components/rule-sets/rule-sets.component.ts",
+        "role": "product-source",
+        "generated": false,
+        "likelyOrigin": "authorship-declared",
+        "inference": "path-policy"
+      }
+    ]
+  },
+  "traceability": {
+    "required": [
+      "FILTER-APP:AC-001",
+      "FILTER-APP:AC-002",
+      "FILTER-APP:AC-003",
+      "FILTER-APP:AC-004",
+      "FILTER-APP:AC-005"
+    ],
+    "bound": [
+      "FILTER-APP:AC-001",
+      "FILTER-APP:AC-002",
+      "FILTER-APP:AC-003",
+      "FILTER-APP:AC-004",
+      "FILTER-APP:AC-005"
+    ],
+    "missing": [],
+    "ambiguous": [],
+    "bindings": [
+      {
+        "clauseId": "FILTER-APP:AC-001",
+        "testSource": "src/app/components/rule-sets/rule-sets.component.spec.ts",
+        "bindingAssurance": "namespace-qualified"
+      },
+      {
+        "clauseId": "FILTER-APP:AC-002",
+        "testSource": "src/app/components/rule-sets/rule-sets.component.spec.ts",
+        "bindingAssurance": "namespace-qualified"
+      },
+      {
+        "clauseId": "FILTER-APP:AC-003",
+        "testSource": "src/app/components/rule-sets/rule-sets.component.spec.ts",
+        "bindingAssurance": "namespace-qualified"
+      },
+      {
+        "clauseId": "FILTER-APP:AC-004",
+        "testSource": "src/app/components/rule-sets/rule-sets.component.spec.ts",
+        "bindingAssurance": "namespace-qualified"
+      },
+      {
+        "clauseId": "FILTER-APP:AC-005",
+        "testSource": "src/app/components/rule-sets/rule-sets.component.spec.ts",
+        "bindingAssurance": "namespace-qualified"
+      }
+    ]
+  },
+  "testExecutions": [],
+  "tree": {
+    "workingStateDigest": "sha256:ede290f133aaf45ec36bd62c15a555003780f1721ea92e86a1f7dafaf6f979c5",
+    "generationCommit": null,
+    "generationTree": null
+  },
+  "model": {
+    "task": "code",
+    "required": true,
+    "authorshipProducer": "governed-agent",
+    "minimumAssurance": "unavailable",
+    "mappingRevision": null,
+    "provider": null,
+    "requestedModel": null,
+    "resolvedModel": null,
+    "assurance": "unavailable",
+    "invocationIds": [],
+    "host": null,
+    "observationSource": null,
+    "observationIntegrity": "unverified-local",
+    "observedAt": null,
+    "generation": null
+  },
+  "status": "pending-tests",
+  "capturedAt": "2026-09-14T21:39:33.097Z"
+}

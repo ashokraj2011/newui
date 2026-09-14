@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "kind": "generation-publication",
+  "workId": "filter-app",
+  "phase": "implementation",
+  "generation": 1,
+  "generationIntentId": "078a06ae-d5bd-422c-a32b-0b5a71385909",
+  "generationStart": {
+    "path": "singularity/work-items/filter-app/context/generation-start/implementation-gen1.json",
+    "sha256": "sha256:d5e39f9d3699c8ff8b9eafa45246cbaccd66685bb4e4d88000cdc61379e15c94"
+  },
+  "changeSet": {
+    "path": "singularity/work-items/filter-app/context/code-delivery/implementation-gen1-changes.json",
+    "digest": "sha256:b569446510402e5f754d12cb85d8f4b7fb8aafb1b281e68c9248a1b5dd1ab560"
+  },
+  "resultDigest": "sha256:0d7bc54cc00b13ac1b7827d64e36c354c5b6612c2e0ffb81f1ef67e743d1d6e2",
+  "architectureIntent": null,
+  "architectureDecision": null,
+  "baseline": {
+    "commit": "11819248e2dcf414ba3482b61d86184abfaa5cc1",
+    "tree": "ff8def124e1fc40b0d75ba8613964f6f3d7374b2"
+  },
+  "transactionId": "012ec2ce-c83a-4001-b106-f0f70ce898a0",
+  "eventId": "5e9f2297-ddb8-4396-84f3-04b0af259b72",
+  "eventSha256": "sha256:d35169d8ad6643d7ac141ad73fab1a81941332e96a0e081542bf9d0bed000703",
+  "commitBinding": {
+    "method": "containing-governed-transaction",
+    "commit": "$self",
+    "tree": "$self",
+    "parent": "f7580ceb68618ff6741f362b8dc352b424d06357"
+  },
+  "publishedAt": "2026-09-14T21:39:33.097Z",
+  "recordSha256": "sha256:d56024c744c1e282cdd88ef653546e0931359e5b091141f02ea1ef5683b0300d"
+}
