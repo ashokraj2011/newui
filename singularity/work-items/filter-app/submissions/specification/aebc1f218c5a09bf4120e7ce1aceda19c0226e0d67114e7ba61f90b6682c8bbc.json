@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 2,
+  "workId": "filter-app",
+  "epicId": null,
+  "planId": null,
+  "jiraIssueId": "filter-app",
+  "initialJiraKey": null,
+  "currentJiraKey": null,
+  "canonicalBranch": "filter-app",
+  "submittedBranch": "filter-app",
+  "submissionCommit": "76844abf09bb6045d09bfef6d3bbec7efaf963bd",
+  "sourceCommit": "76844abf09bb6045d09bfef6d3bbec7efaf963bd",
+  "sourceTreeSha256": "sha256:4a80befb5844f59c73956cbb1de87b2b70ba1afec11a5039c8820ec8398290a2",
+  "phase": "specification",
+  "generation": 1,
+  "authorship": {
+    "schemaVersion": 1,
+    "producer": "governed-agent",
+    "channel": "copilot-host",
+    "actor": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    },
+    "governedAgentContext": {
+      "agentId": "product-owner"
+    },
+    "kernelModel": {
+      "invoked": false,
+      "status": "exact",
+      "invocationIds": []
+    },
+    "externalAiUse": {
+      "value": "unknown",
+      "status": "unavailable"
+    },
+    "changeOrigins": [
+      "copilot"
+    ],
+    "source": {
+      "kind": "in-place",
+      "filename": "spec.md",
+      "mediaType": "text/markdown",
+      "sha256": "867a0635d53227ea1ce7a058e8a313af838049aca1e7025987c228b249fef507",
+      "bytes": 5817
+    },
+    "generation": 1,
+    "publishedAt": "2026-09-14T15:42:13.287Z"
+  },
+  "artifacts": [
+    {
+      "path": "singularity/work-items/filter-app/artifacts/specification/spec.md",
+      "kind": "document",
+      "sha256": "3473a894e986c8e9448b6124cd9eb54284cb7efc04a68a20230c117592eea1d1",
+      "size": 9563,
+      "reference": {
+        "handle": "sfref:v1:story:filter-app:4003d923c65195f7f04cf9d4ac5743036072684cce882787019a330ad907064a",
+        "recordHash": "4003d923c65195f7f04cf9d4ac5743036072684cce882787019a330ad907064a"
+      }
+    }
+  ],
+  "references": [
+    {
+      "handle": "sfref:v1:story:filter-app:4003d923c65195f7f04cf9d4ac5743036072684cce882787019a330ad907064a",
+      "recordHash": "4003d923c65195f7f04cf9d4ac5743036072684cce882787019a330ad907064a",
+      "purpose": "review-evidence",
+      "required": true
+    }
+  ],
+  "agentBriefs": [
+    {
+      "consumerPhase": "convergence",
+      "status": "ready",
+      "path": "singularity/work-items/filter-app/context/briefs/specification-gen1-for-convergence.json",
+      "renderedPath": "singularity/work-items/filter-app/context/briefs/specification-gen1-for-convergence.md",
+      "sourceSha256": "574a1573ff8f635cd6bf7d9e739af56b56b9f9c704aa33f13b23f36d156e8b84",
+      "sourceBytes": 9481,
+      "renderedSha256": "e232aa107bd007b7520fb31a7d3bea29f2a85e928bd0bbf98b88f8c8c264c0f4",
+      "integritySha256": "e0395d0096ecf3881368243ed94589e0f7595fdf4b0b54a8dda2fc56b7d250dc"
+    },
+    {
+      "consumerPhase": "implementation",
+      "status": "ready",
+      "path": "singularity/work-items/filter-app/context/briefs/specification-gen1-for-implementation.json",
+      "renderedPath": "singularity/work-items/filter-app/context/briefs/specification-gen1-for-implementation.md",
+      "sourceSha256": "574a1573ff8f635cd6bf7d9e739af56b56b9f9c704aa33f13b23f36d156e8b84",
+      "sourceBytes": 9481,
+      "renderedSha256": "6a5b103aa324e6b02e6bb8117c6cad0a7b023a41f553f30096625a3d69cfe6cb",
+      "integritySha256": "21389a9a949717f1743c238a437d6380f7da44e991e8572c1ceccc017a037c72"
+    },
+    {
+      "consumerPhase": "planning",
+      "status": "ready",
+      "path": "singularity/work-items/filter-app/context/briefs/specification-gen1-for-planning.json",
+      "renderedPath": "singularity/work-items/filter-app/context/briefs/specification-gen1-for-planning.md",
+      "sourceSha256": "574a1573ff8f635cd6bf7d9e739af56b56b9f9c704aa33f13b23f36d156e8b84",
+      "sourceBytes": 9481,
+      "renderedSha256": "8fa860acd2679b5c7e0c7c692e0f68cfbc133273cf159a4a405becd503e3c9a5",
+      "integritySha256": "6819545893216eed4710b10f9f3fabff54e1ffd771cd0b823bfbaa934a80c853"
+    },
+    {
+      "consumerPhase": "verification",
+      "status": "ready",
+      "path": "singularity/work-items/filter-app/context/briefs/specification-gen1-for-verification.json",
+      "renderedPath": "singularity/work-items/filter-app/context/briefs/specification-gen1-for-verification.md",
+      "sourceSha256": "574a1573ff8f635cd6bf7d9e739af56b56b9f9c704aa33f13b23f36d156e8b84",
+      "sourceBytes": 9481,
+      "renderedSha256": "e22b8b63807669555520cd1ccd8d1e50df7d949339e0f2cb9d6af6b13384d47d",
+      "integritySha256": "782699cdeb5df69e9f4cd55cd5000ffc3d7ea7cf8c897b68dfbf0072ce117a51"
+    }
+  ],
+  "checks": [],
+  "usage": [
+    {
+      "status": "unavailable",
+      "source": "copilot-otel-unavailable",
+      "provider": null,
+      "model": null,
+      "requestedModel": null,
+      "resolvedModel": null,
+      "resolvedModelAssurance": "unavailable",
+      "inputTokens": null,
+      "outputTokens": null,
+      "cachedInputTokens": null,
+      "cacheWriteInputTokens": null,
+      "totalTokens": null,
+      "providerCost": null,
+      "costStatus": "unavailable",
+      "spans": null,
+      "startedAt": "2026-09-14T15:42:13.287Z",
+      "completedAt": "2026-09-14T15:42:13.287Z",
+      "agent": "product-owner",
+      "generation": 1
+    }
+  ],
+  "approvals": [],
+  "visualAssurance": null,
+  "submissionEvidence": {
+    "architectureIntent": null,
+    "architectureDecision": null,
+    "testExecutions": [],
+    "claimMaps": [],
+    "checksSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "artifactSetSha256": "6732a53a2612b97514f77302e35974fecde867c362d491506851f13997e8b182"
+  },
+  "witnessReview": {
+    "enrollment": {
+      "schemaVersion": 1,
+      "mode": "disabled",
+      "witnessedClauses": {
+        "enabled": false,
+        "profiles": []
+      },
+      "testcaseExact": {
+        "mode": "disabled",
+        "profile": null,
+        "requiredAssurance": "unavailable",
+        "policySha256": "sha256:12b50a34a1f03338377ecd76f44b20cbee83e7b91a0b07392ef08e3d8fd60800"
+      },
+      "claimMapContractVersion": 2,
+      "cab": null,
+      "sgos": null,
+      "rollout": {
+        "id": "wel-v0.2-observe",
+        "version": 1,
+        "enrollment": "new-story-only"
+      },
+      "configurationAuthority": {
+        "repository": "https://github.com/ashokraj2011/newui.git",
+        "branch": "sflow/config",
+        "commit": "a951f1e19d1e0cfaa79a1276923f663eec67c463",
+        "projectionSha256": "437fbb9ea777c4b8a3ad6d134e1556f1173287104b991c2574d60518e1e07ba6"
+      }
+    },
+    "enrollmentClassification": "enrolled",
+    "enrollmentReason": null,
+    "clauseMappings": [],
+    "testcaseObservations": []
+  },
+  "submittedAt": "2026-09-14T15:51:09.514Z",
+  "submittedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "status": "awaiting_review",
+  "packetSha256": "aebc1f218c5a09bf4120e7ce1aceda19c0226e0d67114e7ba61f90b6682c8bbc"
+}
