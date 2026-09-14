@@ -99,7 +99,7 @@ approvalAuthorities:
 #     clone: { mode: blobless-sparse, filter: "blob:none", sparseCone: [apps/mobile, packages/contracts], fallback: refuse }
 #     jira: { projectKey: MOB }
 #     metadata: { appId: APP-1001, name: Mobile application, owner: Digital }
-repositories: {newui: {url: https://github.com/ashokraj2011/newui.git, defaultBranch: main, required: true}}
+repositories: {newui: {url: https://github.com/ashokraj2011/newui.git, defaultBranch: main, required: true, clone: {mode: blobless, filter: blob:none, sparseCone: [], fallback: refuse}}}
 
 repositoryMetadata:
   requiredKeys: []
