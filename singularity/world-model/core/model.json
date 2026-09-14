@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "mode": "deterministic-light",
+  "title": "logic-engine",
+  "repository": {
+    "commit": "3959741424a3d2dc89dc20a4e11613782a1eb1c8",
+    "branch": "filter-app"
+  },
+  "counts": {
+    "files": 81,
+    "source": 45,
+    "tests": 3,
+    "manifests": 2,
+    "deployment": 0
+  },
+  "languages": {
+    "TypeScript": 42,
+    "JavaScript": 3
+  },
+  "topDirectories": {
+    "src": 57,
+    "(root)": 14,
+    "server": 4,
+    ".vscode": 3,
+    ".antigravity": 1,
+    ".sflow": 1,
+    "scripts": 1
+  },
+  "packages": [
+    {
+      "path": "package.json",
+      "name": "logic-engine",
+      "scripts": [
+        "build",
+        "client",
+        "ng",
+        "server",
+        "start",
+        "test",
+        "watch"
+      ],
+      "dependencies": [
+        "@angular-devkit/build-angular",
+        "@angular/animations",
+        "@angular/cli",
+        "@angular/common",
+        "@angular/compiler",
+        "@angular/compiler-cli",
+        "@angular/core",
+        "@angular/forms",
+        "@angular/platform-browser",
+        "@angular/platform-browser-dynamic",
+        "@angular/router",
+        "@tailwindcss/postcss",
+        "@types/jasmine",
+        "concurrently",
+        "jasmine-core",
+        "karma",
+        "karma-chrome-launcher",
+        "karma-coverage",
+        "karma-jasmine",
+        "karma-jasmine-html-reporter",
+        "lucide-angular",
+        "postcss",
+        "rxjs",
+        "tailwindcss",
+        "tslib",
+        "typescript",
+        "zone.js"
+      ]
+    },
+    {
+      "path": "server/package.json",
+      "name": "rule-engine-backend",
+      "scripts": [
+        "start"
+      ],
+      "dependencies": [
+        "@google/generative-ai",
+        "cors",
+        "dotenv",
+        "express",
+        "pg"
+      ]
+    }
+  ],
+  "commands": [
+    "npm run build",
+    "npm run client",
+    "npm run ng",
+    "npm run server",
+    "npm run start",
+    "npm run test",
+    "npm run watch"
+  ]
+}
