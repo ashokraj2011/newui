@@ -1,0 +1,11 @@
+version: 1
+capabilities:
+  new-uix:
+    name: newui
+    kind: delivery
+    parent: null
+    repository: newui
+    jira:
+      projectKey: NN
+    teams:
+      - ashok

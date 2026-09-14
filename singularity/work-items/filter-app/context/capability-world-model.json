@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "capabilityId": "new-uix",
+  "capabilityPath": [
+    "new-uix"
+  ],
+  "capabilityMapSha256": "b0133efb3bb348108c9069eb04d774ad8f937989b8672222a1e399e08350c2e1",
+  "requiredViews": [
+    "business",
+    "architecture",
+    "development",
+    "testing",
+    "security",
+    "release"
+  ],
+  "maxBytes": 262144,
+  "bytes": 0,
+  "repositories": [
+    {
+      "id": "newui",
+      "status": "local-grounding"
+    }
+  ],
+  "files": [],
+  "warnings": [
+    "Capability leases could not be read: Governed state at 'refs/remotes/origin/state' is unavailable; it was not treated as absent. Git could not list governed state at 'refs/remotes/origin/state'."
+  ],
+  "recordedAt": "2026-09-14T15:28:04.291Z"
+}

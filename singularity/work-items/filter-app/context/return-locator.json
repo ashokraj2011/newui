@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "kind": "return-locator",
+  "workId": "filter-app",
+  "capabilityId": "new-uix",
+  "originRepositoryId": "newui",
+  "repositories": [
+    {
+      "id": "newui",
+      "remote": "origin",
+      "required": true,
+      "url": "https://github.com/ashokraj2011/newui.git",
+      "fingerprint": "750c6085a6d965a26f931bf8a5081eb3d47c615024ddd66a5a52c914acfb303a",
+      "portability": "portable"
+    }
+  ],
+  "lifecycleRef": "refs/heads/filter-app",
+  "workBranchRef": "refs/heads/filter-app",
+  "configuration": {
+    "sha256": "50f79d34a163420256a1a15cd3cae1b93b77e0fac14f5e05152a19444766a57a",
+    "branch": "sflow/config",
+    "commit": "a951f1e19d1e0cfaa79a1276923f663eec67c463"
+  },
+  "cloneStrategy": "existing-or-clone",
+  "integritySha256": "383c8b78d5aba6afb9f576bc36bb9761569b62e3d12f06296114960328cb71d9"
+}
