@@ -1,0 +1,16 @@
+<div class="flex-1 flex flex-col h-full w-full overflow-hidden">
+  <!-- Main content panel — fills the parent container fully now -->
+  <main class="flex-1 overflow-y-auto bg-[#fcf9f8] p-6 custom-scrollbar">
+    <div class="mx-auto max-w-[var(--size-container-max)] p-1 animate-scale-up">
+      @switch (store.activeTab()) {
+        @case ('overview')  { <app-overview-tab></app-overview-tab> }
+        @case ('test-data') { <app-test-data-tab></app-test-data-tab> }
+        @case ('generated') { <app-generated-tests-tab></app-generated-tests-tab> }
+        @case ('test-runs') { <app-test-runs-tab></app-test-runs-tab> }
+        @case ('coverage')  { <app-coverage-tab></app-coverage-tab> }
+        @case ('validate')  { <app-validate-tab></app-validate-tab> }
+        @case ('library')   { <app-library-tab></app-library-tab> }
+      }
+    </div>
+  </main>
+</div>

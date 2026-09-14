@@ -1,0 +1,195 @@
+<div class="space-y-6">
+
+  <!-- Header -->
+  <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+    <div>
+      <h1 class="text-2xl font-bold tracking-tight text-neutral-900">Coverage Heatmap</h1>
+      <p class="mt-1 text-sm text-neutral-500">
+        Real condition coverage from {{ totalRuns() }} test run{{ totalRuns() !== 1 ? 's' : '' }} on
+        <span class="font-bold text-secondary">{{ store.selectedRule().name }}</span>
+      </p>
+    </div>
+    <button type="button" (click)="store.activeTab.set('generated')"
+      class="rounded border border-neutral-300 px-4 py-2 text-xs font-bold text-neutral-700 hover:bg-neutral-50">
+      View Test Cases →
+    </button>
+  </div>
+
+  <!-- No runs yet -->
+  <div *ngIf="totalRuns() === 0"
+    class="flex flex-col items-center justify-center gap-3 rounded-lg border border-dashed border-neutral-300 bg-white py-16 text-center">
+    <lucide-icon name="trending-up" class="h-10 w-10 text-neutral-300"></lucide-icon>
+    <p class="text-sm font-bold text-neutral-500">No test runs yet</p>
+    <p class="text-xs text-neutral-400 max-w-xs">Save and run some test cases to generate coverage data.</p>
+    <div class="mt-2 flex gap-2">
+      <button type="button" (click)="store.activeTab.set('test-data')"
+        class="rounded border border-secondary px-4 py-2 text-xs font-bold text-secondary hover:bg-secondary/5">
+        Create Test Case
+      </button>
+      <button type="button" (click)="store.activeTab.set('test-runs')"
+        class="rounded bg-primary px-4 py-2 text-xs font-bold text-white hover:opacity-90">
+        Run Evaluation
+      </button>
+    </div>
+  </div>
+
+  <!-- Coverage summary cards -->
+  <div *ngIf="totalRuns() > 0" class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+    <div class="rounded-lg border border-neutral-200 bg-white p-3 shadow-xs text-center">
+      <div class="text-2xl font-extrabold text-neutral-900">{{ coverageSummary().total }}</div>
+      <div class="text-[10px] font-bold uppercase text-neutral-400 mt-0.5">Total Conditions</div>
+    </div>
+    <div class="rounded-lg border border-neutral-200 bg-white p-3 shadow-xs text-center">
+      <div class="text-2xl font-extrabold text-neutral-900">{{ totalRuns() }}</div>
+      <div class="text-[10px] font-bold uppercase text-neutral-400 mt-0.5">Test Runs</div>
+    </div>
+    <div class="rounded-lg border border-green-200 bg-green-50 p-3 shadow-xs text-center">
+      <div class="text-2xl font-extrabold text-fidelity-green-bright">{{ coverageSummary().fullyPassed }}</div>
+      <div class="text-[10px] font-bold uppercase text-green-600 mt-0.5">Always Pass</div>
+    </div>
+    <div class="rounded-lg border border-red-200 bg-red-50 p-3 shadow-xs text-center">
+      <div class="text-2xl font-extrabold text-red-600">{{ coverageSummary().alwaysFailed }}</div>
+      <div class="text-[10px] font-bold uppercase text-red-500 mt-0.5">Always Fail</div>
+    </div>
+    <div class="rounded-lg border border-yellow-200 bg-yellow-50 p-3 shadow-xs text-center">
+      <div class="text-2xl font-extrabold text-yellow-700">{{ coverageSummary().mixed }}</div>
+      <div class="text-[10px] font-bold uppercase text-yellow-600 mt-0.5">Mixed</div>
+    </div>
+    <div class="rounded-lg border border-neutral-200 bg-neutral-100 p-3 shadow-xs text-center">
+      <div class="text-2xl font-extrabold text-neutral-500">{{ coverageSummary().shortCircuited }}</div>
+      <div class="text-[10px] font-bold uppercase text-neutral-400 mt-0.5">Never Eval'd</div>
+    </div>
+  </div>
+
+  <!-- Branch coverage (MC/DC) -->
+  <div *ngIf="totalRuns() > 0" class="rounded-xl border border-neutral-200 bg-white p-5 shadow-card">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center gap-5">
+        <div class="text-center">
+          <div class="text-4xl font-extrabold"
+            [ngClass]="report().branchCoveragePct >= 80 ? 'text-fidelity-green-bright' : report().branchCoveragePct >= 50 ? 'text-yellow-600' : 'text-red-600'">
+            {{ report().branchCoveragePct }}%
+          </div>
+          <div class="text-[10px] font-bold uppercase tracking-wide text-neutral-400">Branch Coverage</div>
+        </div>
+        <div class="text-xs text-neutral-600">
+          <p class="font-semibold text-neutral-800">{{ report().coveredBranches }} / {{ report().totalBranches }} branches taken</p>
+          <p class="mt-0.5 text-neutral-500">
+            Each condition has a TRUE and a FALSE branch.
+            <span class="font-bold text-green-700">{{ report().fullyCovered }}</span> fully covered,
+            <span class="font-bold text-amber-600">{{ gaps().length }}</span> with gaps.
+          </p>
+          <div class="mt-2 h-2 w-56 overflow-hidden rounded-full bg-neutral-200">
+            <div class="h-full rounded-full" [style.width]="report().branchCoveragePct + '%'" [ngClass]="branchBarColor(report().branchCoveragePct)"></div>
+          </div>
+        </div>
+      </div>
+      <button *ngIf="gaps().length > 0" type="button" (click)="coverGaps()"
+        class="flex items-center gap-2 self-start rounded-lg bg-primary px-4 py-2 text-xs font-bold text-white hover:opacity-90">
+        <lucide-icon name="sparkles" class="h-4 w-4"></lucide-icon>
+        Cover the gaps
+      </button>
+    </div>
+
+    <!-- Gap list -->
+    <div *ngIf="gaps().length > 0" class="mt-4 border-t border-neutral-100 pt-3">
+      <p class="mb-2 text-[10px] font-bold uppercase tracking-widest text-neutral-400">Uncovered branches</p>
+      <div class="flex flex-wrap gap-2">
+        <div *ngFor="let g of gaps()" class="flex items-center gap-2 rounded border border-amber-200 bg-amber-50/60 px-2.5 py-1.5">
+          <span class="max-w-[180px] truncate font-mono text-[10px] text-neutral-700" [title]="g.expression">{{ g.expression }}</span>
+          <span *ngIf="g.needsTrue" class="rounded bg-green-100 px-1.5 py-0.5 text-[9px] font-bold text-green-700">needs TRUE</span>
+          <span *ngIf="g.needsFalse" class="rounded bg-red-100 px-1.5 py-0.5 text-[9px] font-bold text-red-700">needs FALSE</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="gaps().length === 0" class="mt-3 flex items-center gap-2 text-xs font-semibold text-green-700">
+      <lucide-icon name="circle-check" class="h-4 w-4"></lucide-icon>
+      Every condition has been exercised both TRUE and FALSE.
+    </div>
+  </div>
+
+  <!-- Heatmap cells -->
+  <div *ngIf="conditionStats().length > 0" class="rounded-xl border border-neutral-200 bg-white p-5 shadow-card">
+    <div class="mb-4 flex items-center justify-between">
+      <h3 class="text-sm font-bold text-neutral-800">Condition Coverage Map</h3>
+      <div class="flex items-center gap-4 text-[10px] font-semibold text-neutral-500">
+        <span class="flex items-center gap-1"><span class="inline-block h-3 w-3 rounded bg-green-500"></span> 100%</span>
+        <span class="flex items-center gap-1"><span class="inline-block h-3 w-3 rounded bg-yellow-400"></span> 50%</span>
+        <span class="flex items-center gap-1"><span class="inline-block h-3 w-3 rounded bg-red-500"></span> 0%</span>
+        <span class="flex items-center gap-1"><span class="inline-block h-3 w-3 rounded bg-neutral-200"></span> Skipped</span>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <div *ngFor="let stat of conditionStats()"
+        class="group relative flex h-10 cursor-default items-center gap-2 rounded border px-2.5 transition-all hover:scale-[1.04] hover:shadow"
+        [ngClass]="rowBorder(stat)"
+        [title]="stat.expression">
+        <span class="h-3 w-3 shrink-0 rounded" [ngClass]="cellColor(stat)"></span>
+        <span class="max-w-[160px] truncate font-mono text-[10px] text-neutral-700">{{ stat.expression }}</span>
+        <span class="text-[10px] font-bold"
+          [ngClass]="stat.evaluated === 0 ? 'text-neutral-400' : passRate(stat) >= 50 ? 'text-green-700' : 'text-red-600'">
+          {{ stat.evaluated === 0 ? '—' : passRate(stat) + '%' }}
+        </span>
+        <!-- Tooltip -->
+        <div class="absolute bottom-full left-1/2 z-10 mb-1.5 hidden -translate-x-1/2 min-w-[200px] rounded border border-neutral-200 bg-white p-2.5 shadow-lg text-[10px] group-hover:block">
+          <p class="font-bold text-neutral-800 mb-1 break-words">{{ stat.expression }}</p>
+          <div class="grid grid-cols-2 gap-x-4 gap-y-0.5 font-mono text-neutral-600">
+            <span>Evaluated:</span><span class="font-bold">{{ stat.evaluated }}</span>
+            <span>Passed:</span><span class="font-bold text-green-700">{{ stat.passed }}</span>
+            <span>Failed:</span><span class="font-bold text-red-600">{{ stat.failed }}</span>
+            <span>Short-circuited:</span><span class="font-bold text-neutral-500">{{ stat.shortCircuited }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed table -->
+  <div *ngIf="conditionStats().length > 0" class="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-card">
+    <div class="border-b border-neutral-200 bg-neutral-50 px-5 py-3">
+      <h3 class="text-sm font-bold text-neutral-800">Condition Detail</h3>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse text-left text-xs">
+        <thead>
+          <tr class="border-b border-neutral-200 bg-neutral-50 text-[10px] font-bold uppercase tracking-wider text-neutral-500">
+            <th class="p-3 pl-5">Condition</th>
+            <th class="p-3">Namespace</th>
+            <th class="p-3 text-right">Evaluated</th>
+            <th class="p-3 text-right">Passed</th>
+            <th class="p-3 text-right">Failed</th>
+            <th class="p-3 text-right">Short-circ'd</th>
+            <th class="p-3 pr-5 text-right">Pass Rate</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-neutral-100">
+          <tr *ngFor="let stat of conditionStats()" class="hover:bg-neutral-50">
+            <td class="p-3 pl-5 font-mono text-[11px] max-w-[240px]">
+              <span class="block truncate" [title]="stat.expression">{{ stat.expression }}</span>
+            </td>
+            <td class="p-3 font-mono text-[10px] text-neutral-500">{{ stat.namespace ?? '—' }}</td>
+            <td class="p-3 text-right font-bold">{{ stat.evaluated }}</td>
+            <td class="p-3 text-right font-bold text-fidelity-green-bright">{{ stat.passed }}</td>
+            <td class="p-3 text-right font-bold text-red-600">{{ stat.failed }}</td>
+            <td class="p-3 text-right text-neutral-400">{{ stat.shortCircuited }}</td>
+            <td class="p-3 pr-5 text-right">
+              <div class="flex items-center justify-end gap-2">
+                <div class="h-2 w-16 overflow-hidden rounded-full bg-neutral-200">
+                  <div class="h-full rounded-full"
+                    [style.width]="passRate(stat) + '%'"
+                    [ngClass]="passRate(stat) >= 75 ? 'bg-green-500' : passRate(stat) >= 40 ? 'bg-yellow-400' : 'bg-red-500'">
+                  </div>
+                </div>
+                <span class="w-8 font-bold"
+                  [ngClass]="stat.evaluated === 0 ? 'text-neutral-400' : passRate(stat) >= 50 ? 'text-green-700' : 'text-red-600'">
+                  {{ stat.evaluated === 0 ? '—' : passRate(stat) + '%' }}
+                </span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

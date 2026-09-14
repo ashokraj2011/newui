@@ -1,0 +1,348 @@
+<div class="space-y-6">
+
+  <!-- Header -->
+  <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+    <div>
+      <h1 class="text-2xl font-bold tracking-tight text-neutral-900">Validation Dashboard</h1>
+      <p class="mt-0.5 text-sm text-neutral-500">Health, coverage and test status across all {{ summary().totalRules }} rules</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <button type="button" (click)="runSelected()" [disabled]="runningAll() || selectionStats().cases === 0"
+        class="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-xs font-bold text-white shadow-xs hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+        [title]="selectionStats().rules === 0 ? 'Select rules below to run their test cases' : ''">
+        <lucide-icon [name]="runningAll() ? 'refresh-cw' : 'circle-play'" class="h-4 w-4" [class.animate-spin]="runningAll()"></lucide-icon>
+        {{ runningAll() ? 'Running…' : selectionStats().cases ? 'Run selected (' + selectionStats().cases + ')' : 'Run selected' }}
+      </button>
+      <div class="flex items-center gap-3 rounded-xl border border-neutral-200 bg-white px-5 py-2.5 shadow-card">
+        <div class="flex flex-col">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-neutral-400">Overall Health</span>
+          <span class="text-xs font-bold" [ngClass]="scoreColor(healthScore())">{{ healthScoreLabel() }}</span>
+        </div>
+        <div class="relative flex h-14 w-14 items-center justify-center">
+          <svg class="h-14 w-14 -rotate-90" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="15.5" fill="none" stroke="#e5e5e5" stroke-width="3"></circle>
+            <circle cx="18" cy="18" r="15.5" fill="none" stroke="currentColor" stroke-width="3"
+              stroke-linecap="round"
+              [attr.stroke-dasharray]="(healthScore() / 100 * 97.4) + ' 97.4'"
+              [ngClass]="scoreColor(healthScore())"></circle>
+          </svg>
+          <span class="absolute text-sm font-extrabold" [ngClass]="scoreColor(healthScore())">{{ healthScore() }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI cards -->
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+    <div class="rounded-xl border border-neutral-200 bg-white p-4 shadow-card card-hover">
+      <div class="flex items-center justify-between">
+        <lucide-icon name="layers" class="h-5 w-5 text-secondary"></lucide-icon>
+        <span class="text-2xl font-extrabold text-neutral-900">{{ summary().totalRules }}</span>
+      </div>
+      <div class="mt-1 text-xs font-semibold text-neutral-500">Total Rules</div>
+      <div class="mt-2 flex gap-2 text-[10px] font-bold">
+        <span class="text-fidelity-green-bright">{{ summary().healthy }} healthy</span>
+        <span class="text-red-600">{{ summary().failing }} failing</span>
+        <span class="text-neutral-400">{{ summary().untested }} untested</span>
+      </div>
+    </div>
+
+    <div class="rounded-xl border border-neutral-200 bg-white p-4 shadow-card card-hover">
+      <div class="flex items-center justify-between">
+        <lucide-icon name="clipboard-check" class="h-5 w-5 text-secondary"></lucide-icon>
+        <span class="text-2xl font-extrabold text-neutral-900">{{ summary().totalCases }}</span>
+      </div>
+      <div class="mt-1 text-xs font-semibold text-neutral-500">Test Cases</div>
+      <div class="mt-2 text-[10px] font-bold text-neutral-400">{{ summary().totalRuns }} total runs</div>
+    </div>
+
+    <div class="rounded-xl border border-neutral-200 bg-white p-4 shadow-card card-hover">
+      <div class="flex items-center justify-between">
+        <lucide-icon name="circle-check" class="h-5 w-5 text-fidelity-green-bright"></lucide-icon>
+        <span class="text-2xl font-extrabold" [ngClass]="scoreColor(summary().overallPassRate)">{{ summary().overallPassRate }}%</span>
+      </div>
+      <div class="mt-1 text-xs font-semibold text-neutral-500">Pass Rate</div>
+      <div class="mt-2 flex gap-2 text-[10px] font-bold">
+        <span class="text-fidelity-green-bright">{{ summary().passedRuns }} passed</span>
+        <span class="text-red-600">{{ summary().failedRuns }} failed</span>
+      </div>
+    </div>
+
+    <div class="rounded-xl border border-neutral-200 bg-white p-4 shadow-card card-hover">
+      <div class="flex items-center justify-between">
+        <lucide-icon name="trending-up" class="h-5 w-5 text-secondary"></lucide-icon>
+        <span class="text-2xl font-extrabold" [ngClass]="scoreColor(summary().avgCoverage)">{{ summary().avgCoverage }}%</span>
+      </div>
+      <div class="mt-1 text-xs font-semibold text-neutral-500">Avg Coverage</div>
+      <div class="mt-2 text-[10px] font-bold text-neutral-400">across tested rules</div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div class="flex gap-0.5 rounded border border-neutral-300 bg-neutral-200/50 p-0.5">
+      <button type="button" (click)="setFilter('all')" class="rounded px-3 py-1 text-xs font-semibold transition-all"
+        [ngClass]="healthFilter() === 'all' ? 'bg-white text-neutral-800 shadow-xs' : 'text-neutral-500 hover:text-neutral-900'">
+        All ({{ summary().totalRules }})
+      </button>
+      <button type="button" (click)="setFilter('healthy')" class="rounded px-3 py-1 text-xs font-semibold transition-all"
+        [ngClass]="healthFilter() === 'healthy' ? 'bg-white text-fidelity-green-bright shadow-xs' : 'text-neutral-500 hover:text-neutral-900'">
+        Healthy ({{ summary().healthy }})
+      </button>
+      <button type="button" (click)="setFilter('failing')" class="rounded px-3 py-1 text-xs font-semibold transition-all"
+        [ngClass]="healthFilter() === 'failing' ? 'bg-white text-red-600 shadow-xs' : 'text-neutral-500 hover:text-neutral-900'">
+        Failing ({{ summary().failing }})
+      </button>
+      <button type="button" (click)="setFilter('untested')" class="rounded px-3 py-1 text-xs font-semibold transition-all"
+        [ngClass]="healthFilter() === 'untested' ? 'bg-white text-neutral-700 shadow-xs' : 'text-neutral-500 hover:text-neutral-900'">
+        Untested ({{ summary().untested }})
+      </button>
+    </div>
+    <div class="relative w-full sm:w-64">
+      <lucide-icon name="search" class="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-neutral-400"></lucide-icon>
+      <input type="text" [ngModel]="searchQuery()" (ngModelChange)="searchQuery.set($event)"
+        placeholder="Search rules…"
+        class="w-full rounded-lg border border-neutral-300 bg-white py-2 pl-8 pr-3 text-xs outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
+    </div>
+  </div>
+
+  <!-- Selection / run scope toolbar -->
+  <div class="flex flex-col gap-3 rounded-xl border border-neutral-200 bg-white px-4 py-3 shadow-card lg:flex-row lg:items-center lg:justify-between">
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+      <span class="text-[10px] font-bold uppercase tracking-wider text-neutral-400">Run scope</span>
+      <span class="text-xs text-neutral-400">Quick select:</span>
+      <button type="button" (click)="selectByClass('failing')"
+        class="rounded-full border border-red-200 bg-red-50 px-2.5 py-1 text-[11px] font-bold text-red-600 hover:bg-red-100">Failing</button>
+      <button type="button" (click)="selectByClass('bugs')"
+        class="flex items-center gap-1 rounded-full border border-red-200 bg-red-50 px-2.5 py-1 text-[11px] font-bold text-red-600 hover:bg-red-100">
+        <lucide-icon name="bug" class="h-3 w-3"></lucide-icon>Has bugs
+      </button>
+      <button type="button" (click)="selectByClass('regressions')"
+        class="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-[11px] font-bold text-amber-700 hover:bg-amber-100">Mismatches</button>
+      <button type="button" (click)="selectByClass('untested')"
+        class="rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-[11px] font-bold text-neutral-600 hover:bg-neutral-100">Untested</button>
+      <button type="button" (click)="selectByClass('healthy')"
+        class="rounded-full border border-green-200 bg-green-50 px-2.5 py-1 text-[11px] font-bold text-fidelity-green-bright hover:bg-green-100">Healthy</button>
+      <button type="button" (click)="toggleAllFiltered()"
+        class="rounded-full border border-secondary/30 bg-secondary/5 px-2.5 py-1 text-[11px] font-bold text-secondary hover:bg-secondary/10">
+        {{ allFilteredSelected() ? 'Unselect filtered' : 'Select filtered' }}
+      </button>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="text-xs font-semibold" [ngClass]="selectionStats().rules ? 'text-neutral-700' : 'text-neutral-400'">
+        {{ selectionStats().rules }} rule{{ selectionStats().rules !== 1 ? 's' : '' }} · {{ selectionStats().cases }} test case{{ selectionStats().cases !== 1 ? 's' : '' }} selected
+      </span>
+      <button type="button" (click)="clearSelection()" [disabled]="!selectionStats().rules"
+        class="rounded border border-neutral-200 px-3 py-1.5 text-[11px] font-bold text-neutral-500 hover:bg-neutral-50 disabled:opacity-40">
+        Clear
+      </button>
+      <button type="button" (click)="runSelected()" [disabled]="runningAll() || selectionStats().cases === 0"
+        class="flex items-center gap-1.5 rounded bg-primary px-3 py-1.5 text-[11px] font-bold text-white hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50">
+        <lucide-icon [name]="runningAll() ? 'refresh-cw' : 'circle-play'" class="h-3.5 w-3.5" [class.animate-spin]="runningAll()"></lucide-icon>
+        Run selected
+      </button>
+    </div>
+  </div>
+
+  <!-- Rules health table -->
+  <div class="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-card">
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse text-left text-xs">
+        <thead>
+          <tr class="border-b border-neutral-200 bg-neutral-50 text-[10px] font-bold uppercase tracking-wider text-neutral-500">
+            <th class="p-3 pl-5 w-8">
+              <input type="checkbox" [checked]="allFilteredSelected()" (change)="toggleAllFiltered()"
+                title="Select all rules in view"
+                class="h-3.5 w-3.5 cursor-pointer accent-primary align-middle" />
+            </th>
+            <th class="p-3">Rule</th>
+            <th class="p-3 text-center">Status</th>
+            <th class="p-3 text-center">Namespaces</th>
+            <th class="p-3 text-center">Conditions</th>
+            <th class="p-3 text-center">Test Cases</th>
+            <th class="p-3 text-center">Runs</th>
+            <th class="p-3">Pass Rate</th>
+            <th class="p-3">Coverage</th>
+            <th class="p-3">Last Run</th>
+            <th class="p-3 pr-5 text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-neutral-100">
+          <tr *ngFor="let h of filteredHealth()" class="hover:bg-neutral-50"
+            [ngClass]="isSelected(h.rule.rule_id) ? 'bg-secondary/5' : ''">
+            <!-- Selection -->
+            <td class="p-3 pl-5">
+              <input type="checkbox" [checked]="isSelected(h.rule.rule_id)" (change)="toggleRule(h.rule.rule_id)"
+                class="h-3.5 w-3.5 cursor-pointer accent-primary align-middle" />
+            </td>
+            <!-- Rule name -->
+            <td class="p-3">
+              <button type="button" (click)="openRule(h, 'test-runs')" class="text-left">
+                <div class="font-bold text-neutral-900 hover:text-primary">{{ h.rule.name }}</div>
+                <div class="font-mono text-[10px] text-neutral-400">{{ h.rule.rule_id }}</div>
+              </button>
+            </td>
+            <!-- Health badge -->
+            <td class="p-3 text-center">
+              <span class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold"
+                [ngClass]="h.health === 'healthy' ? 'bg-green-100 text-fidelity-green-bright' : h.health === 'failing' ? 'bg-red-100 text-red-600' : 'bg-neutral-100 text-neutral-500'">
+                <lucide-icon [name]="h.health === 'healthy' ? 'circle-check' : h.health === 'failing' ? 'octagon-x' : 'clock'" class="h-3 w-3"></lucide-icon>
+                {{ h.health === 'healthy' ? 'Healthy' : h.health === 'failing' ? 'Failing' : 'Untested' }}
+              </span>
+            </td>
+            <td class="p-3 text-center font-bold text-neutral-700">{{ h.namespaceCount }}</td>
+            <td class="p-3 text-center font-bold text-neutral-700">{{ h.conditionCount }}</td>
+            <td class="p-3 text-center font-bold text-neutral-700">{{ h.testCaseCount }}</td>
+            <td class="p-3 text-center">
+              <span class="font-bold text-fidelity-green-bright">{{ h.passedRuns }}</span><span class="text-neutral-300">/</span><span class="font-bold text-neutral-600">{{ h.runCount }}</span>
+            </td>
+            <!-- Pass rate -->
+            <td class="p-3">
+              <div class="flex items-center gap-2">
+                <div class="h-1.5 w-14 overflow-hidden rounded-full bg-neutral-200">
+                  <div class="h-full rounded-full" [style.width]="h.passRate + '%'" [ngClass]="coverageColor(h.passRate)"></div>
+                </div>
+                <span class="w-8 font-bold" [ngClass]="h.runCount === 0 ? 'text-neutral-400' : scoreColor(h.passRate)">{{ h.runCount === 0 ? '—' : h.passRate + '%' }}</span>
+              </div>
+            </td>
+            <!-- Coverage -->
+            <td class="p-3">
+              <div class="flex items-center gap-2">
+                <div class="h-1.5 w-14 overflow-hidden rounded-full bg-neutral-200">
+                  <div class="h-full rounded-full" [style.width]="h.coverage + '%'" [ngClass]="coverageColor(h.coverage)"></div>
+                </div>
+                <span class="w-8 font-bold" [ngClass]="h.runCount === 0 ? 'text-neutral-400' : scoreColor(h.coverage)">{{ h.runCount === 0 ? '—' : h.coverage + '%' }}</span>
+              </div>
+            </td>
+            <td class="p-3 text-[10px] text-neutral-500">{{ formatDate(h.lastRunAt) }}</td>
+            <!-- Actions -->
+            <td class="p-3 pr-5">
+              <div class="flex items-center justify-end gap-1">
+                <button type="button" (click)="openRule(h, 'test-data')" title="Test Rule"
+                  class="rounded border border-neutral-200 p-1.5 text-neutral-400 hover:border-secondary hover:text-secondary">
+                  <lucide-icon name="database" class="h-3.5 w-3.5"></lucide-icon>
+                </button>
+                <button type="button" (click)="openRule(h, 'generated')" title="Test Cases"
+                  class="rounded border border-neutral-200 p-1.5 text-neutral-400 hover:border-secondary hover:text-secondary">
+                  <lucide-icon name="clipboard-check" class="h-3.5 w-3.5"></lucide-icon>
+                </button>
+                <button type="button" (click)="openRule(h, 'coverage')" title="Coverage"
+                  class="rounded border border-neutral-200 p-1.5 text-neutral-400 hover:border-secondary hover:text-secondary">
+                  <lucide-icon name="trending-up" class="h-3.5 w-3.5"></lucide-icon>
+                </button>
+                <button type="button" (click)="openRule(h, 'test-runs')" title="Evaluate"
+                  class="rounded bg-primary p-1.5 text-white hover:opacity-90">
+                  <lucide-icon name="circle-play" class="h-3.5 w-3.5"></lucide-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Empty -->
+          <tr *ngIf="filteredHealth().length === 0">
+            <td colspan="11" class="p-10 text-center">
+              <lucide-icon name="search-x" class="mx-auto mb-2 h-8 w-8 text-neutral-300"></lucide-icon>
+              <p class="text-xs font-semibold text-neutral-400">No rules match the current filter</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Test Results matrix -->
+  <div class="rounded-xl border border-neutral-200 bg-white shadow-card" *ngIf="caseResults().length > 0">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-200 bg-neutral-50 px-5 py-3">
+      <h3 class="text-sm font-bold text-neutral-800">Test Results</h3>
+      <div class="flex items-center gap-3 text-[10px] font-bold">
+        <span class="text-neutral-400">{{ assertionSummary().asserted }} asserted</span>
+        <span class="flex items-center gap-1 text-fidelity-green-bright">
+          <lucide-icon name="circle-check" class="h-3 w-3"></lucide-icon>{{ assertionSummary().matches }} meeting expected
+        </span>
+        <span class="flex items-center gap-1" [ngClass]="assertionSummary().bugs ? 'text-red-600' : 'text-neutral-400'">
+          <lucide-icon name="bug" class="h-3 w-3"></lucide-icon>{{ assertionSummary().bugs }} possible bug{{ assertionSummary().bugs !== 1 ? 's' : '' }}
+        </span>
+        <span class="flex items-center gap-1" [ngClass]="assertionSummary().drift ? 'text-amber-600' : 'text-neutral-400'">
+          <lucide-icon name="triangle-alert" class="h-3 w-3"></lucide-icon>{{ assertionSummary().drift }} data-drift
+        </span>
+      </div>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-xs">
+        <thead>
+          <tr class="border-b border-neutral-200 text-[10px] font-bold uppercase tracking-wider text-neutral-400">
+            <th class="px-5 py-2">Test Case</th>
+            <th class="px-3 py-2">Rule</th>
+            <th class="px-3 py-2 text-center">Expected</th>
+            <th class="px-3 py-2 text-center">Actual</th>
+            <th class="px-3 py-2 text-center">Assertion</th>
+            <th class="px-3 py-2">Last Run</th>
+            <th class="w-10 px-3 py-2"></th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-neutral-100">
+          <tr *ngFor="let c of caseResults()" class="hover:bg-neutral-50"
+            [ngClass]="c.tc.lastAssertionClass === 'bug' ? 'bg-red-50/40' : c.tc.lastAssertionClass === 'drift' ? 'bg-amber-50/40' : ''">
+            <td class="px-5 py-2 font-semibold text-neutral-800">{{ c.tc.name }}</td>
+            <td class="px-3 py-2 text-neutral-500">{{ c.ruleName }}</td>
+            <td class="px-3 py-2 text-center">
+              <span *ngIf="c.tc.expectedResult" class="rounded px-2 py-0.5 text-[9px] font-bold uppercase"
+                [ngClass]="c.tc.expectedResult === 'PASSED' ? 'bg-green-100 text-fidelity-green-bright' : 'bg-red-100 text-red-600'">
+                {{ c.tc.expectedResult }}
+              </span>
+              <span *ngIf="!c.tc.expectedResult" class="text-neutral-300">—</span>
+            </td>
+            <td class="px-3 py-2 text-center">
+              <span *ngIf="c.tc.lastResult" class="rounded px-2 py-0.5 text-[9px] font-bold uppercase"
+                [ngClass]="c.tc.lastResult === 'PASSED' ? 'bg-green-100 text-fidelity-green-bright' : 'bg-red-100 text-red-600'">
+                {{ c.tc.lastResult }}
+              </span>
+              <span *ngIf="!c.tc.lastResult" class="text-neutral-300">not run</span>
+            </td>
+            <td class="px-3 py-2 text-center">
+              <span *ngIf="c.tc.lastAssertionClass === 'bug'" class="inline-flex items-center gap-1 rounded bg-red-600 px-2 py-0.5 text-[9px] font-bold uppercase text-white"
+                title="Outcome differs from expected on UNCHANGED data — likely a rule/engine bug.">
+                <lucide-icon name="bug" class="h-3 w-3"></lucide-icon>Possible bug
+              </span>
+              <span *ngIf="c.tc.lastAssertionClass === 'drift'" class="inline-flex items-center gap-1 rounded bg-amber-500 px-2 py-0.5 text-[9px] font-bold uppercase text-white"
+                title="Outcome differs from expected, but the data changed since the expectation was pinned.">
+                <lucide-icon name="triangle-alert" class="h-3 w-3"></lucide-icon>Data drift
+              </span>
+              <span *ngIf="c.tc.lastAssertion === 'match'" class="inline-flex items-center gap-1 text-fidelity-green-bright">
+                <lucide-icon name="circle-check" class="h-3.5 w-3.5"></lucide-icon>
+              </span>
+              <span *ngIf="!c.tc.expectedResult || c.tc.lastAssertion === 'none'" class="text-neutral-300">—</span>
+            </td>
+            <td class="px-3 py-2 text-[10px] text-neutral-400">{{ formatDate(c.tc.lastRunAt || null) }}</td>
+            <td class="px-3 py-2 text-center">
+              <button type="button" (click)="openTestCases(c.tc.ruleId)" title="Open in Test Cases"
+                class="rounded border border-neutral-200 p-1 text-neutral-400 hover:border-secondary hover:text-secondary">
+                <lucide-icon name="arrow-right" class="h-3.5 w-3.5"></lucide-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Recent activity -->
+  <div class="rounded-xl border border-neutral-200 bg-white shadow-card" *ngIf="store.runHistory().length > 0">
+    <div class="border-b border-neutral-200 bg-neutral-50 px-5 py-3">
+      <h3 class="text-sm font-bold text-neutral-800">Recent Test Runs</h3>
+    </div>
+    <div class="divide-y divide-neutral-100">
+      <div *ngFor="let run of store.runHistory().slice().reverse().slice(0, 6)" class="flex items-center gap-3 px-5 py-2.5">
+        <lucide-icon [name]="run.evalResult.status === 'PASSED' ? 'circle-check' : 'octagon-x'" class="h-4 w-4 shrink-0"
+          [ngClass]="run.evalResult.status === 'PASSED' ? 'text-fidelity-green-bright' : 'text-red-600'"></lucide-icon>
+        <span class="flex-1 text-xs font-semibold text-neutral-700">{{ run.ruleId }}</span>
+        <span class="rounded px-2 py-0.5 text-[9px] font-bold uppercase"
+          [ngClass]="run.evalResult.status === 'PASSED' ? 'bg-green-100 text-fidelity-green-bright' : 'bg-red-100 text-red-600'">
+          {{ run.evalResult.status }}
+        </span>
+        <span class="text-[10px] text-neutral-400">{{ formatDate(run.runAt) }}</span>
+      </div>
+    </div>
+  </div>
+
+</div>

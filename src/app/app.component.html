@@ -1,0 +1,186 @@
+<div class="min-h-screen bg-background text-on-surface flex font-sans select-none overflow-hidden relative">
+  <!-- Floating System-Wide Toast Alert -->
+  <div *ngIf="notification" class="fixed bottom-6 right-6 z-50 bg-primary border-2 border-emerald-300 text-white px-5 py-3.5 rounded-lg shadow-xl flex items-center gap-3 animate-bounce">
+    <svg class="w-5 h-5 text-emerald-300 stroke-[3px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+    </svg>
+    <div>
+      <div class="font-bold text-xs">System Operation Alert</div>
+      <div class="text-[11px] opacity-90 mt-0.5">{{ notification }}</div>
+    </div>
+  </div>
+
+  <!-- Side Navigation Bar -->
+  <app-sidebar
+    [activeTab]="activeTab"
+    (activeTabChange)="handleActiveTabChange($event)"
+    (newRule)="handleNewRule()"
+  ></app-sidebar>
+
+  <!-- Main Container -->
+  <div class="flex-1 flex flex-col ml-[280px] h-screen overflow-hidden">
+    <!-- Header / Top Bar -->
+    <app-top-nav-bar
+      [title]="getHeaderTitle()"
+      [activeNavGroup]="activeNavGroup"
+      (activeNavGroupChange)="activeNavGroup = $event"
+      [searchValue]="searchQuery"
+      (searchValueChange)="searchQuery = $event"
+      (publish)="handlePublish()"
+    ></app-top-nav-bar>
+
+    <!-- RuleSets visual secondary sub-navigation tabs (Only visible when activeTab === 'rulesets') -->
+    <div *ngIf="activeTab === 'rulesets'" class="bg-surface border-b border-outline-variant px-6 py-2 flex items-center justify-between shadow-sm z-30">
+      <div class="flex items-center gap-3">
+        <!-- Rule Type Switcher -->
+        <span class="text-[10px] font-extrabold text-on-surface-variant uppercase tracking-wider mr-1">
+          Rule Model:
+        </span>
+        <div class="flex bg-surface-container-low p-0.5 rounded border border-outline-variant/60 h-7 mr-4 items-center">
+          <button
+            type="button"
+            (click)="activeRuleType = 'general'"
+            [ngClass]="{
+              'bg-white text-primary shadow-sm font-bold': activeRuleType === 'general',
+              'text-on-surface-variant hover:text-on-surface': activeRuleType !== 'general'
+            }"
+            class="px-2.5 h-6 rounded text-[11px] font-bold flex items-center justify-center cursor-pointer transition-all border-none"
+          >
+            General Logic
+          </button>
+          <button
+            type="button"
+            (click)="activeRuleType = 'decisionTable'"
+            [ngClass]="{
+              'bg-white text-primary shadow-sm font-bold': activeRuleType === 'decisionTable',
+              'text-on-surface-variant hover:text-on-surface': activeRuleType !== 'decisionTable'
+            }"
+            class="px-2.5 h-6 rounded text-[11px] font-bold flex items-center justify-center cursor-pointer transition-all border-none"
+          >
+            Decision Table
+          </button>
+        </div>
+
+        <!-- Sub views if activeRuleType is general -->
+        <ng-container *ngIf="activeRuleType === 'general'">
+          <span class="text-[10px] font-extrabold text-on-surface-variant uppercase tracking-wider mr-1">
+            Views:
+          </span>
+          
+          <button
+            (click)="rulesetsSubView = 'designer'"
+            [ngClass]="{
+              'bg-primary text-white shadow-sm': rulesetsSubView === 'designer',
+              'text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high': rulesetsSubView !== 'designer'
+            }"
+            class="px-3 py-1 text-xs font-semibold rounded transition-all cursor-pointer border-none"
+          >
+            1. Visual Designer
+          </button>
+
+          <button
+            (click)="rulesetsSubView = 'canvas'"
+            [ngClass]="{
+              'bg-primary text-white shadow-sm': rulesetsSubView === 'canvas',
+              'text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high': rulesetsSubView !== 'canvas'
+            }"
+            class="px-3 py-1 text-xs font-semibold rounded transition-all cursor-pointer border-none"
+          >
+            2. DAG Canvas
+          </button>
+
+          <button
+            (click)="rulesetsSubView = 'config'"
+            [ngClass]="{
+              'bg-primary text-white shadow-sm': rulesetsSubView === 'config',
+              'text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high': rulesetsSubView !== 'config'
+            }"
+            class="px-3 py-1 text-xs font-semibold rounded transition-all cursor-pointer border-none"
+          >
+            3. Bento Settings
+          </button>
+        </ng-container>
+      </div>
+
+      <div class="flex items-center gap-2 text-[10px] font-bold text-primary bg-emerald-50 text-emerald-800 border border-emerald-300 px-2 py-0.5 rounded shadow-sm">
+        <svg class="w-3.5 h-3.5 text-emerald-700 animate-pulse animate-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+        </svg>
+        <span>Multi-Layer Editor</span>
+      </div>
+    </div>
+
+    <!-- Selected Dashboard Screen Area -->
+    <div class="flex-1 overflow-hidden flex flex-col">
+      <app-data-schema
+        *ngIf="activeTab === 'schema'"
+        [fields]="schemaFields"
+        (fieldsChange)="handleFieldsChange($event)"
+      ></app-data-schema>
+
+      <ng-container *ngIf="activeTab === 'rulesets'">
+        <ng-container *ngIf="activeRuleType === 'general'">
+          <app-rule-sets
+            *ngIf="rulesetsSubView === 'designer'"
+            [fields]="schemaFields"
+          ></app-rule-sets>
+          
+          <app-rule-canvas
+            *ngIf="rulesetsSubView === 'canvas'"
+            [(nodes)]="canvasNodes"
+            [connections]="canvasConnections"
+          ></app-rule-canvas>
+          
+          <app-rule-config
+            *ngIf="rulesetsSubView === 'config'"
+          ></app-rule-config>
+        </ng-container>
+
+        <app-decision-table
+          *ngIf="activeRuleType === 'decisionTable'"
+          [(rules)]="rules"
+        ></app-decision-table>
+      </ng-container>
+
+      <app-functions
+        *ngIf="activeTab === 'functions'"
+      ></app-functions>
+
+      <app-shell
+        *ngIf="activeTab === 'validator'"
+        class="flex-1 flex flex-col overflow-hidden"
+      ></app-shell>
+
+      <app-history-logs
+        *ngIf="activeTab === 'history'"
+        [logs]="executionLogs"
+      ></app-history-logs>
+
+      <div *ngIf="activeTab === 'settings'" class="p-8 text-center max-w-md mx-auto my-auto space-y-3">
+        <h3 class="text-sm font-bold text-on-surface">Settings Console</h3>
+        <p class="text-xs text-on-surface-variant leading-relaxed">
+          Configure standard API credentials, sync parameters, local storage bindings, and deployment triggers for the compiled evaluation rulesets.
+        </p>
+        <button
+          (click)="triggerNotification('Settings saved successfully.')"
+          class="px-4 py-2 bg-primary hover:bg-primary-hover text-white rounded font-bold text-xs cursor-pointer shadow-sm border-none"
+        >
+          Save Settings
+        </button>
+      </div>
+
+      <div *ngIf="activeTab === 'support'" class="p-8 text-center max-w-md mx-auto my-auto space-y-3">
+        <h3 class="text-sm font-bold text-on-surface">Support Console</h3>
+        <p class="text-xs text-on-surface-variant leading-relaxed">
+          Connect directly with Enterprise Support Desk to report runtime compile exceptions or schema conflicts.
+        </p>
+        <button
+          (click)="triggerNotification('Support ticket initialized.')"
+          class="px-4 py-2 border border-outline-variant text-on-surface font-bold text-xs rounded hover:bg-surface-container cursor-pointer bg-white"
+        >
+          Submit Incident Report
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
