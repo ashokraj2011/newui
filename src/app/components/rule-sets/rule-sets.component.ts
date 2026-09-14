@@ -34,9 +34,21 @@ interface RuleGrammar {
   team: string;
   operator: 'AND' | 'OR';
   terms: Term[];
+  filter: FilterConfig;
   thenAction: string;
   thenReason: string;
   isActive: boolean;
+}
+
+type FilterMode = 'top' | 'bottom' | 'range';
+
+interface FilterConfig {
+  namespace: string;
+  attributes: string[];
+  mode: FilterMode;
+  limit: number | null;
+  rangeStart: number | null;
+  rangeEnd: number | null;
 }
 
 /* ─── Constants ───────────────────────────────────────────── */
@@ -158,6 +170,91 @@ const DEFAULT_SCHEDULE: ScheduleConfig = {
           <!-- Designer canvas -->
           <div class="flex-1 overflow-y-auto dot-grid p-8 custom-scrollbar">
             <div class="max-w-2xl mx-auto space-y-0 pb-40">
+
+              <section class="bg-surface-container-lowest border-2 border-secondary/20 rounded-2xl shadow-sm mb-6" aria-labelledby="filter-heading">
+                <div class="px-5 py-3 border-b border-outline-variant/60 bg-secondary/[0.03] rounded-t-[14px]">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold text-on-surface-variant">Filter rows</span>
+                    <span class="text-[9px] font-extrabold px-2.5 py-0.5 rounded-full border tracking-wide bg-secondary/10 text-secondary border-secondary/20">Required</span>
+                  </div>
+                  <h2 id="filter-heading" class="text-sm font-extrabold text-on-surface mt-1">Define the entity slice for this rule</h2>
+                </div>
+
+                <div class="p-5 space-y-5">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label for="filter-namespace" class="block text-[10px] font-bold uppercase tracking-wider text-on-surface-variant mb-2">Namespace</label>
+                      <input id="filter-namespace" [(ngModel)]="filter.namespace" (ngModelChange)="onFilterNamespaceChange()" list="filter-namespaces" type="text" placeholder="e.g. customer"
+                        class="w-full h-9 px-3 text-xs border border-outline-variant rounded-lg bg-white text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary" />
+                      <datalist id="filter-namespaces">
+                        <option *ngFor="let namespace of getFilterNamespaces()" [value]="namespace"></option>
+                      </datalist>
+                    </div>
+
+                    <div>
+                      <label for="filter-mode" class="block text-[10px] font-bold uppercase tracking-wider text-on-surface-variant mb-2">Limit mode</label>
+                      <select id="filter-mode" [(ngModel)]="filter.mode" (ngModelChange)="onFilterModeChange()"
+                        class="w-full h-9 px-3 text-xs border border-outline-variant rounded-lg bg-white text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary">
+                        <option value="top">Top rows</option>
+                        <option value="bottom">Bottom rows</option>
+                        <option value="range">Inclusive range</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Attributes and order</label>
+                      <span class="text-[10px] text-on-surface-variant">{{ filter.attributes.length }} selected</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div class="border border-outline-variant rounded-xl p-3 bg-surface-container-low">
+                        <div class="text-[10px] font-bold text-on-surface-variant mb-2">Available attributes</div>
+                        <div class="flex flex-wrap gap-2">
+                          <button *ngFor="let attribute of getFilterAttributes()" type="button" (click)="toggleFilterAttribute(attribute)"
+                            [attr.aria-pressed]="filter.attributes.includes(attribute)"
+                            [ngClass]="filter.attributes.includes(attribute) ? 'bg-secondary text-white border-secondary' : 'bg-white text-on-surface-variant border-outline-variant hover:border-secondary/50'"
+                            class="px-2.5 py-1.5 rounded-lg border text-[10px] font-semibold cursor-pointer transition-all">
+                            {{ attribute }}
+                          </button>
+                        </div>
+                      </div>
+                      <div class="border border-outline-variant rounded-xl p-3 bg-white">
+                        <div class="text-[10px] font-bold text-on-surface-variant mb-2">Selected order</div>
+                        <div *ngIf="filter.attributes.length === 0" class="text-[10px] text-on-surface-variant py-2">Select at least one attribute.</div>
+                        <div *ngFor="let attribute of filter.attributes; let index = index" class="flex items-center gap-2 py-1.5 border-b last:border-b-0 border-outline-variant/50">
+                          <span class="w-5 h-5 flex items-center justify-center rounded-full bg-secondary/10 text-secondary text-[10px] font-bold">{{ index + 1 }}</span>
+                          <span class="font-mono text-[10px] text-on-surface flex-1 truncate">{{ attribute }}</span>
+                          <button type="button" (click)="moveFilterAttribute(index, -1)" [disabled]="index === 0" aria-label="Move attribute up"
+                            class="p-1 text-on-surface-variant hover:text-secondary disabled:opacity-30 border-none bg-transparent cursor-pointer disabled:cursor-default">↑</button>
+                          <button type="button" (click)="moveFilterAttribute(index, 1)" [disabled]="index === filter.attributes.length - 1" aria-label="Move attribute down"
+                            class="p-1 text-on-surface-variant hover:text-secondary disabled:opacity-30 border-none bg-transparent cursor-pointer disabled:cursor-default">↓</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div *ngIf="filter.mode !== 'range'">
+                    <label for="filter-limit" class="block text-[10px] font-bold uppercase tracking-wider text-on-surface-variant mb-2">{{ filter.mode === 'top' ? 'First' : 'Last' }} N rows</label>
+                    <input id="filter-limit" [(ngModel)]="filter.limit" type="number" min="1" step="1" class="w-full md:w-40 h-9 px-3 text-xs border border-outline-variant rounded-lg bg-white focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary" />
+                  </div>
+
+                  <div *ngIf="filter.mode === 'range'" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label for="filter-range-start" class="block text-[10px] font-bold uppercase tracking-wider text-on-surface-variant mb-2">Start row</label>
+                      <input id="filter-range-start" [(ngModel)]="filter.rangeStart" type="number" min="1" step="1" class="w-full h-9 px-3 text-xs border border-outline-variant rounded-lg bg-white focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary" />
+                    </div>
+                    <div>
+                      <label for="filter-range-end" class="block text-[10px] font-bold uppercase tracking-wider text-on-surface-variant mb-2">End row</label>
+                      <input id="filter-range-end" [(ngModel)]="filter.rangeEnd" type="number" min="1" step="1" class="w-full h-9 px-3 text-xs border border-outline-variant rounded-lg bg-white focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary" />
+                    </div>
+                  </div>
+
+                  <div *ngIf="getFilterValidationMessages().length > 0" class="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[11px] text-red-700" role="alert">
+                    <div *ngFor="let message of getFilterValidationMessages()">{{ message }}</div>
+                  </div>
+                </div>
+              </section>
 
               <!-- Empty state -->
               <div *ngIf="rule.terms.length === 0" class="text-center py-20 text-on-surface-variant text-xs">
@@ -529,6 +626,14 @@ export class RuleSetsComponent implements OnInit {
     team:        'Risk & Fraud',
     operator:    'AND',
     terms:       [],
+    filter: {
+      namespace: '',
+      attributes: [],
+      mode: 'top',
+      limit: 10,
+      rangeStart: 1,
+      rangeEnd: 10,
+    },
     thenAction:  'Flag for Review',
     thenReason:  'High Risk Transaction Detected',
     isActive:    true,
@@ -551,6 +656,74 @@ export class RuleSetsComponent implements OnInit {
         schedule: { ...DEFAULT_SCHEDULE }
       }
     ];
+  }
+
+  get filter(): FilterConfig {
+    return this.rule.filter;
+  }
+
+  getFilterNamespaces(): string[] {
+    return this.getEntities();
+  }
+
+  getFilterAttributes(): string[] {
+    const namespace = this.filter.namespace.trim();
+    const schemaAttributes = this.fields
+      .filter(field => !namespace || field.entity === namespace)
+      .map(field => field.name);
+    if (schemaAttributes.length > 0) return [...new Set(schemaAttributes)];
+    return [...new Set(DEFAULT_FIELDS
+      .filter(field => !namespace || field.startsWith(`${namespace}.`))
+      .map(field => field.split('.')[1]))];
+  }
+
+  onFilterNamespaceChange() {
+    const available = new Set(this.getFilterAttributes());
+    this.filter.attributes = this.filter.attributes.filter(attribute => available.has(attribute));
+  }
+
+  onFilterModeChange() {
+    if (this.filter.mode === 'top' || this.filter.mode === 'bottom') {
+      if (this.filter.limit === null) this.filter.limit = 10;
+    } else {
+      if (this.filter.rangeStart === null) this.filter.rangeStart = 1;
+      if (this.filter.rangeEnd === null) this.filter.rangeEnd = 10;
+    }
+  }
+
+  toggleFilterAttribute(attribute: string) {
+    this.filter.attributes = this.filter.attributes.includes(attribute)
+      ? this.filter.attributes.filter(selected => selected !== attribute)
+      : [...this.filter.attributes, attribute];
+  }
+
+  moveFilterAttribute(index: number, direction: -1 | 1) {
+    const target = index + direction;
+    if (target < 0 || target >= this.filter.attributes.length) return;
+    const attributes = [...this.filter.attributes];
+    [attributes[index], attributes[target]] = [attributes[target], attributes[index]];
+    this.filter.attributes = attributes;
+  }
+
+  getFilterValidationMessages(): string[] {
+    const messages: string[] = [];
+    if (!this.filter.namespace.trim()) messages.push('Namespace is required.');
+    if (this.filter.attributes.length === 0) messages.push('Select at least one attribute.');
+    if (this.filter.mode === 'range') {
+      if (!this.isPositiveInteger(this.filter.rangeStart)) messages.push('Range start must be a positive integer.');
+      if (!this.isPositiveInteger(this.filter.rangeEnd)) messages.push('Range end must be a positive integer.');
+      if (this.isPositiveInteger(this.filter.rangeStart) && this.isPositiveInteger(this.filter.rangeEnd)
+        && this.filter.rangeStart! > this.filter.rangeEnd!) {
+        messages.push('Range start must be less than or equal to end.');
+      }
+    } else if (!this.isPositiveInteger(this.filter.limit)) {
+      messages.push('Limit must be a positive integer.');
+    }
+    return messages;
+  }
+
+  private isPositiveInteger(value: number | null): boolean {
+    return typeof value === 'number' && Number.isInteger(value) && value > 0;
   }
 
   /* ── Term operations ──────────────────────────────────────── */
@@ -659,6 +832,14 @@ export class RuleSetsComponent implements OnInit {
       description: this.rule.description,
       team:        this.rule.team,
       operator:    this.rule.operator,
+      filter: {
+        namespace: this.filter.namespace,
+        attributes: this.filter.attributes,
+        mode: this.filter.mode,
+        limit: this.filter.limit,
+        rangeStart: this.filter.rangeStart,
+        rangeEnd: this.filter.rangeEnd,
+      },
       terms: this.rule.terms.map(t => ({
         termType: t.termType,
         ...(t.termType === 'general' ? {

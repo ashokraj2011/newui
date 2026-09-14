@@ -38,7 +38,7 @@
   "inputs": {
     "generation": 1,
     "path": "singularity/work-items/filter-app/context/inputs-implementation-gen1.json",
-    "sha256": "17097a0575510d5c4dfdcead95c6bb29fe9c68676d74932d30fc11f6c64a3add",
+    "sha256": "4f0f1a1135a0b75d1fcd01705e592a75a5048ef45fad213771f4afbfc34a52e2",
     "renderedSha256": "50aaccd42d3a10fb2ae9a412f0085d8d0f6318a35f18ed7208485de767988736",
     "mode": "enforce"
   },
@@ -70,15 +70,30 @@ the detailed changed-components and test sections are preserved separately.
 
 ## Implemented outcome
 
-TODO: Summarize the implemented behavior.
+Implemented a filter block in the existing rule-authoring designer. Authors can enter a namespace,
+select one or more schema-backed attributes, reorder the selected attributes, and choose top,
+bottom, or inclusive range limits. New filters default to top mode with a limit of 10. Invalid
+namespace, attribute, and limit states remain invalid and render visible validation feedback.
 
 ## Changed components and decisions
 
-TODO: Cite code, configuration, migrations, and deviations from the specification.
+The filter model and authoring controls were added to
+`src/app/components/rule-sets/rule-sets.component.ts`. Attribute choices come from the supplied
+schema fields with the existing default field list as fallback. Ordering is represented by the
+array order and is changed through explicit up/down controls. Numeric validation accepts only
+positive integers; range validation also requires start to be less than or equal to end. The
+filter is included in the existing JSON preview. No persistence or migration was added, matching
+the approved scope. Focused executable coverage was added at
+`src/app/components/rule-sets/rule-sets.component.spec.ts`.
 
 ## Tests and operational notes
 
-TODO: List AC-nnn/SPEC-nnn-tagged tests, commands, limitations, flags, and rollout notes.
+The focused spec tags the approved clauses `@ac:FILTER-APP:AC-001` through
+`@ac:FILTER-APP:AC-005` and `@req:FILTER-APP:REQ-008`. `npm test -- --watch=false
+--browsers=ChromeHeadless` passed with 28 tests. `npm run build -- --configuration development`
+also passed. The filter is local to the existing authoring flow; persistence remains outside this
+generation. The desktop layout uses the existing responsive canvas and should be checked at the
+specified 1440x900 viewport during downstream verification.
 
 <!-- singularity-flow:inputs:start -->
 
