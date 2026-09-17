@@ -1,7 +1,7 @@
 format: singularity-flow-configuration-baseline/v1
 product:
   version: 0.9.0
-  revision: ac50cd041dd840927b776aea7ff45b510fb4c708
+  revision: 860bc5aef5cb919bf26d88cffff57d2521bf2a22
 workflow:
   version: 2
   inputsMode: enforce
@@ -121,9 +121,9 @@ workflow:
   repositoryReadiness:
     requiredBeforeStory: false
     dependencyHydration: when-detected
-    build: when-detected
+    build: off
     structuredTests: required-for-code
-    applicationStart: when-detected
+    applicationStart: off
     receiptScope: git-private-exact-base
   codeDelivery:
     schemaVersion: 2
@@ -646,6 +646,80 @@ workflow:
         verify:
           inputs:
             - implement
+    classic-delivery:
+      label: Classic delivery
+      description: Intake, code, testing, and code checking with passing
+        repository-native test receipts committed to the Story branch.
+      phases:
+        - intake
+        - implementation
+        - testing
+        - conformance
+      plannedClaims:
+        mode: required
+        clausePhases:
+          - intake
+        owners:
+          implementation: intake
+      templateOverrides:
+        intake: classic-delivery/intake.md
+        testing: classic-delivery/testing.md
+        conformance: classic-delivery/code-checking.md
+      phaseOverrides:
+        intake:
+          artifact:
+            kind: requirements
+          clarification:
+            mode: required
+            maxQuestions: 5
+            topics:
+              - problem
+              - outcome
+              - scope
+              - acceptance criteria
+              - tests
+        implementation:
+          label: Code
+          inputs:
+            - intake
+          approval:
+            authorities:
+              - engineering-reviewers
+            minimum: 1
+            rejectTo:
+              - intake
+              - implementation
+        testing:
+          label: Testing
+          inputs:
+            - intake
+            - implementation
+          writeScope: artifact-only
+          testEvidenceFrom: implementation
+          approval:
+            authorities:
+              - quality-reviewers
+            minimum: 1
+            rejectTo:
+              - implementation
+              - testing
+        conformance:
+          label: Code checking
+          inputs:
+            - intake
+            - implementation
+            - testing
+          testEvidenceFrom: implementation
+          approval:
+            authorities:
+              - quality-reviewers
+              - engineering-reviewers
+            minimum: 1
+            rejectTo:
+              - intake
+              - implementation
+              - testing
+              - conformance
     poc-lite:
       label: POC Lite — local governed change
       description: A model-free four-checkpoint demonstration with repository-native
@@ -2250,6 +2324,12 @@ assets:
     sha256: 083e0361f6ffe9e84905b21558554c8335ab1a036719cb37f104e03f255f3567
   singularity/templates/chore/intake.md:
     sha256: d4632690fa411f3926eee1bfd474f5907aae5efdd31313576acdac04e8934441
+  singularity/templates/classic-delivery/code-checking.md:
+    sha256: 326a133f1626dd1de9385f37742eaba4a960f2f2549feaca3f4cd87c3027d834
+  singularity/templates/classic-delivery/intake.md:
+    sha256: d91d55500e7dbc30a388633bce723623157619bca0bbc9bbaf8e64dfd85308a8
+  singularity/templates/classic-delivery/testing.md:
+    sha256: b77007d921942a7e23b8ffa598f0f20ced19bfb09abde1a9156fee7f83a2534d
   singularity/templates/common/conformance.md:
     sha256: dcb95249d8fef0dcdb87a6f012f09c481a47813e50f4e8dd96be207c81c15ada
   singularity/templates/common/implementation.md:
