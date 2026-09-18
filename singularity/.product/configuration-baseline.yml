@@ -1,7 +1,7 @@
 format: singularity-flow-configuration-baseline/v1
 product:
   version: 0.9.0
-  revision: 4ff003fbee6882cd466e8073af9a54e99238b810
+  revision: 799e09fe74b42719c26496866526fb0007467dd5
 workflow:
   version: 2
   inputsMode: enforce
@@ -344,6 +344,7 @@ workflow:
         - design-intake
         - design-inventory
         - verification
+        - testing
         - visual-verification
         - conformance
         - poc-ui-exploration
@@ -648,8 +649,9 @@ workflow:
             - implement
     classic-delivery:
       label: Classic delivery
-      description: Intake, code, testing, and code checking with passing
-        repository-native test receipts committed to the Story branch.
+      description: Intake, code, testing, and code checking with committed test
+        receipts and explicit reviewer feedback/rework to Code; REV feedback
+        attachments are evidence only.
       phases:
         - intake
         - implementation
@@ -717,6 +719,111 @@ workflow:
             minimum: 1
             rejectTo:
               - intake
+              - implementation
+              - testing
+              - conformance
+    spec-code-test-loop:
+      label: Spec → code → Playwright review
+      description: A specification-first Story with Code publication, governed
+        Playwright browser observations, and bounded human-directed rework; MCP
+        observations never replace structured test receipts or approval.
+      phases:
+        - specification
+        - implementation
+        - testing
+        - conformance
+      spec:
+        mode: enforce
+      plannedClaims:
+        mode: required
+        clausePhases:
+          - specification
+        owners:
+          implementation: specification
+      documents:
+        allowedPhases:
+          - specification
+      templateOverrides:
+        specification: spec-code-test-loop/specification.md
+        testing: spec-code-test-loop/testing.md
+        conformance: spec-code-test-loop/conformance.md
+      phaseOverrides:
+        implementation:
+          label: Code
+          inputs:
+            - specification
+          repairBudget:
+            maxAttempts: 3
+            resetOnPhase: specification
+          approval:
+            authorities:
+              - engineering-reviewers
+            minimum: 1
+            rejectTo:
+              - specification
+              - implementation
+        testing:
+          label: Playwright testing review
+          inputs:
+            - specification
+            - implementation
+          artifact:
+            validation:
+              requiredHeadings:
+                - Exact inputs and committed test receipt
+                - Authorized target and environment
+                - Playwright observations
+                - Clause results and gaps
+                - Correction decision
+                - Residual risk
+          writeScope: artifact-only
+          testEvidenceFrom: implementation
+          mcp:
+            requiredServers:
+              - playwright
+            requireSmoke: true
+            evidence:
+              - server: playwright
+                tool: browser_navigate
+                minimum: 1
+                outputRequired: false
+              - server: playwright
+                tool: browser_snapshot
+                minimum: 1
+                outputRequired: true
+              - server: playwright
+                tool: browser_take_screenshot
+                minimum: 1
+                outputRequired: true
+          approval:
+            authorities:
+              - quality-reviewers
+            minimum: 1
+            rejectTo:
+              - specification
+              - implementation
+              - testing
+        conformance:
+          label: Spec, code and test checking
+          inputs:
+            - specification
+            - implementation
+            - testing
+          artifact:
+            validation:
+              requiredHeadings:
+                - Exact generation bindings
+                - Clause-by-clause comparison
+                - Unplanned changes and evidence gaps
+                - Correction and final decision
+          testEvidenceFrom: implementation
+          approval:
+            authorities:
+              - quality-reviewers
+              - architecture-reviewers
+            minimum: 1
+            rejectTo:
+              - specification
               - implementation
               - testing
               - conformance
@@ -2325,11 +2432,11 @@ assets:
   singularity/templates/chore/intake.md:
     sha256: d4632690fa411f3926eee1bfd474f5907aae5efdd31313576acdac04e8934441
   singularity/templates/classic-delivery/code-checking.md:
-    sha256: 326a133f1626dd1de9385f37742eaba4a960f2f2549feaca3f4cd87c3027d834
+    sha256: 795636436d0542eedc116e5789f019c6ca675100176e78e29b08c92a3942addd
   singularity/templates/classic-delivery/intake.md:
     sha256: d91d55500e7dbc30a388633bce723623157619bca0bbc9bbaf8e64dfd85308a8
   singularity/templates/classic-delivery/testing.md:
-    sha256: b77007d921942a7e23b8ffa598f0f20ced19bfb09abde1a9156fee7f83a2534d
+    sha256: d84b65e54ff4210a7fab6cc1af3a2ea45bbba61fbee383a1ef985f31848ff177
   singularity/templates/common/conformance.md:
     sha256: dcb95249d8fef0dcdb87a6f012f09c481a47813e50f4e8dd96be207c81c15ada
   singularity/templates/common/implementation.md:
@@ -2488,6 +2595,12 @@ assets:
     sha256: dff093133a1be4c93115cfbbb0d994c8ce391fc19279caee30b441ec27a05c0a
   singularity/templates/quick-fix/verify.md:
     sha256: a21900d99d044d35de501f0e43888a8a3ebcfe860e702a5d1b3eec61fdd06f27
+  singularity/templates/spec-code-test-loop/conformance.md:
+    sha256: 8e3f2c7b86b934d12e9929f31de6d1e6545a388592095a5147b4ab957e4389d7
+  singularity/templates/spec-code-test-loop/specification.md:
+    sha256: 4a487088d8275fc54afcb7932c18a4fb04774e85309b26b3ae72618ce9762bc6
+  singularity/templates/spec-code-test-loop/testing.md:
+    sha256: eef65b164a45b3df7843d76ef071e9d9932304ec9861c8ed19c646db105f9284
   singularity/templates/spec-driven/convergence.md:
     sha256: eb257477afca0229ed858875499736c57498015aaee0a527b714356819a9dde2
   singularity/templates/spec-driven/plan.md:
