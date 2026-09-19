@@ -1,7 +1,7 @@
 format: singularity-flow-configuration-baseline/v1
 product:
   version: 0.9.0
-  revision: 799e09fe74b42719c26496866526fb0007467dd5
+  revision: 99f8d886ceeb1f238adfe17ca6349d5f0d1eada3
 workflow:
   version: 2
   inputsMode: enforce
@@ -732,6 +732,11 @@ workflow:
         - implementation
         - testing
         - conformance
+      reworkLoops:
+        - from: testing
+          to: implementation
+          maxAttempts: 3
+          resetOnPhase: specification
       spec:
         mode: enforce
       plannedClaims:
@@ -752,9 +757,6 @@ workflow:
           label: Code
           inputs:
             - specification
-          repairBudget:
-            maxAttempts: 3
-            resetOnPhase: specification
           approval:
             authorities:
               - engineering-reviewers
@@ -801,7 +803,6 @@ workflow:
             minimum: 1
             rejectTo:
               - specification
-              - implementation
               - testing
         conformance:
           label: Spec, code and test checking

@@ -2107,6 +2107,11 @@ workTypes:
       - implementation
       - testing
       - conformance
+    reworkLoops:
+      - from: testing
+        to: implementation
+        maxAttempts: 3
+        resetOnPhase: specification
     spec:
       mode: enforce
     plannedClaims:
@@ -2127,9 +2132,6 @@ workTypes:
         label: Code
         inputs:
           - specification
-        repairBudget:
-          maxAttempts: 3
-          resetOnPhase: specification
         approval:
           authorities:
             - engineering-reviewers
@@ -2176,7 +2178,6 @@ workTypes:
           minimum: 1
           rejectTo:
             - specification
-            - implementation
             - testing
       conformance:
         label: Spec, code and test checking
