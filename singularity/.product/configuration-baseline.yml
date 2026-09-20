@@ -1,7 +1,7 @@
 format: singularity-flow-configuration-baseline/v1
 product:
   version: 0.9.0
-  revision: 974296732c6e1b98b35253b51d60e65d66ce5180
+  revision: 07d9ddc0153f4cf90aabd92fc671f2f3d11d0405
 workflow:
   version: 2
   inputsMode: enforce
@@ -650,8 +650,9 @@ workflow:
     classic-delivery:
       label: Classic delivery
       description: Intake, code, testing, and code checking with committed test
-        receipts and explicit reviewer feedback/rework to Code; REV feedback
-        attachments are evidence only.
+        receipts, the guarded manual REV refinement pilot during Code, and
+        explicit reviewer feedback/rework to Code; REV feedback attachments are
+        evidence only.
       phases:
         - intake
         - implementation
