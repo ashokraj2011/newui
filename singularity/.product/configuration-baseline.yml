@@ -1,7 +1,7 @@
 format: singularity-flow-configuration-baseline/v1
 product:
   version: 0.9.0
-  revision: 2577c98303f3dfab85e1360eabd7138d3a8eca61
+  revision: dc2146c99abfdb9cb910c5612844507356c85913
 workflow:
   version: 2
   inputsMode: enforce
@@ -2614,3 +2614,178 @@ assets:
     sha256: ce6e1d1995c68158f4209063b3cb954eceab8576e1c8db76bfaed27a805a8908
   singularity/templates/spec-driven/spec.md:
     sha256: 27424a624b1dab57323fd7482ac62708bd42d11ba42e41c102f94e15182fe485
+ownership:
+  workflow:
+    workTypes:
+      feature: framework
+      bugfix: framework
+      chore: framework
+      figma-mobile: framework
+      quick-fix: framework
+      classic-delivery: framework
+      spec-code-test-loop: framework
+      poc-lite: framework
+      benchmarking-a: framework
+      benchmarking-b: framework
+      poc-workflow: framework
+      reference-driven-build: framework
+      spec-driven-standard: repository
+    phases:
+      intake: framework
+      requirements: framework
+      design: framework
+      implementation-spec: framework
+      implementation: framework
+      verification: framework
+      conformance: framework
+      reproduction: framework
+      fix-design: framework
+      fix-spec: framework
+      design-intake: framework
+      design-inventory: framework
+      component-mapping: framework
+      mobile-spec: framework
+      visual-verification: framework
+      implement: framework
+      verify: framework
+      testing: framework
+      specification: framework
+      poc-lite-plan: framework
+      poc-lite-act: framework
+      poc-lite-verify: framework
+      poc-lite-finalize: framework
+      poc-intake: framework
+      poc-impact-analysis: framework
+      poc-ui-exploration: framework
+      poc-test-generation: framework
+      poc-validation: framework
+      poc-publication-review: framework
+      planning: framework
+      convergence: framework
+      release: framework
+    artifactSets:
+      spec-driven-specification: framework
+      spec-driven-planning: framework
+      spec-driven-verification: framework
+    mcpServers:
+      playwright: framework
+      figma: framework
+  assets:
+    .github/agents/architect.agent.md: framework
+    .github/agents/developer.agent.md: framework
+    .github/agents/mobile-architect.agent.md: framework
+    .github/agents/poc-analyst.agent.md: framework
+    .github/agents/poc-automation.agent.md: framework
+    .github/agents/poc-explorer.agent.md: framework
+    .github/agents/poc-lite-implementer.agent.md: framework
+    .github/agents/poc-lite-planner.agent.md: framework
+    .github/agents/poc-lite-verifier.agent.md: framework
+    .github/agents/poc-test-developer.agent.md: framework
+    .github/agents/poc-validator.agent.md: framework
+    .github/agents/product-designer.agent.md: framework
+    .github/agents/product-owner.agent.md: framework
+    .github/agents/qa.agent.md: framework
+    singularity/agent-mappings.yml: framework
+    singularity/impact.yml: framework
+    singularity/modelTiers.yml: framework
+    singularity/prompts/copilot-planning.md: framework
+    singularity/prompts/worldmodel-builder.md: framework
+    singularity/templates/benchmark/conformance.md: framework
+    singularity/templates/benchmark/design.md: framework
+    singularity/templates/benchmark/implementation.md: framework
+    singularity/templates/benchmark/intake.md: framework
+    singularity/templates/benchmark/testing.md: framework
+    singularity/templates/bugfix/fix-design.md: framework
+    singularity/templates/bugfix/fix-spec.md: framework
+    singularity/templates/bugfix/intake.md: framework
+    singularity/templates/bugfix/reproduction.md: framework
+    singularity/templates/chore/intake.md: framework
+    singularity/templates/classic-delivery/code-checking.md: framework
+    singularity/templates/classic-delivery/intake.md: framework
+    singularity/templates/classic-delivery/testing.md: framework
+    singularity/templates/common/conformance.md: framework
+    singularity/templates/common/implementation.md: framework
+    singularity/templates/common/intake.md: framework
+    singularity/templates/common/verification.md: framework
+    singularity/templates/feature/design.md: framework
+    singularity/templates/feature/implementation-spec.md: framework
+    singularity/templates/feature/intake.md: framework
+    singularity/templates/feature/requirements.md: framework
+    singularity/templates/figma-mobile/component-mapping.md: framework
+    singularity/templates/figma-mobile/conformance.md: framework
+    singularity/templates/figma-mobile/design-intake.md: framework
+    singularity/templates/figma-mobile/design-inventory.md: framework
+    singularity/templates/figma-mobile/implementation.md: framework
+    singularity/templates/figma-mobile/mobile-spec.md: framework
+    singularity/templates/figma-mobile/visual-verification.md: framework
+    singularity/templates/initiatives/adr-log.md: framework
+    singularity/templates/initiatives/business-case.md: framework
+    singularity/templates/initiatives/cicd-readiness.md: framework
+    singularity/templates/initiatives/compliance-assessment.md: framework
+    singularity/templates/initiatives/data-readiness.md: framework
+    singularity/templates/initiatives/data-source-decision.md: framework
+    singularity/templates/initiatives/dependency-matrix.md: framework
+    singularity/templates/initiatives/deployment-record.md: framework
+    singularity/templates/initiatives/design-specification.md: framework
+    singularity/templates/initiatives/epic-record.yml: framework
+    singularity/templates/initiatives/epic/impact-analysis.yml: framework
+    singularity/templates/initiatives/epic/jira-write-plan.yml: framework
+    singularity/templates/initiatives/epic/materialization-report.md: framework
+    singularity/templates/initiatives/epic/parent-spec.md: framework
+    singularity/templates/initiatives/epic/repository-map.yml: framework
+    singularity/templates/initiatives/epic/requirements-traceability.yml: framework
+    singularity/templates/initiatives/epic/requirements.md: framework
+    singularity/templates/initiatives/epic/story-plan.yml: framework
+    singularity/templates/initiatives/epic/story-spec-index.yml: framework
+    singularity/templates/initiatives/epic/story-spec.md: framework
+    singularity/templates/initiatives/eta-register.md: framework
+    singularity/templates/initiatives/feasibility-report.md: framework
+    singularity/templates/initiatives/functional-tests.md: framework
+    singularity/templates/initiatives/generic-output.md: framework
+    singularity/templates/initiatives/generic-output.yml: framework
+    singularity/templates/initiatives/implementation-index.md: framework
+    singularity/templates/initiatives/initiative-conformance.md: framework
+    singularity/templates/initiatives/initiative-scope.md: framework
+    singularity/templates/initiatives/intake-record.md: framework
+    singularity/templates/initiatives/interface-contract.md: framework
+    singularity/templates/initiatives/measurement-plan.md: framework
+    singularity/templates/initiatives/nfr-assessment.md: framework
+    singularity/templates/initiatives/nfr-specification.md: framework
+    singularity/templates/initiatives/observability-handoff.md: framework
+    singularity/templates/initiatives/operational-readiness.md: framework
+    singularity/templates/initiatives/opportunity-brief.md: framework
+    singularity/templates/initiatives/poc-results.md: framework
+    singularity/templates/initiatives/prfaq.md: framework
+    singularity/templates/initiatives/product-roadmap.md: framework
+    singularity/templates/initiatives/production-learning.md: framework
+    singularity/templates/initiatives/production-validation.md: framework
+    singularity/templates/initiatives/release-scope.md: framework
+    singularity/templates/initiatives/requirement-impact.md: framework
+    singularity/templates/initiatives/sequencing-plan.md: framework
+    singularity/templates/initiatives/service-blueprint.md: framework
+    singularity/templates/initiatives/solution-architecture.md: framework
+    singularity/templates/initiatives/solution-validation.md: framework
+    singularity/templates/initiatives/stakeholder-raci.md: framework
+    singularity/templates/initiatives/technical-poc-results.md: framework
+    singularity/templates/initiatives/test-attestation.md: framework
+    singularity/templates/initiatives/test-data-inventory.md: framework
+    singularity/templates/initiatives/ux-concept.md: framework
+    singularity/templates/poc-lite/act.md: framework
+    singularity/templates/poc-lite/finalize.md: framework
+    singularity/templates/poc-lite/plan.md: framework
+    singularity/templates/poc-lite/verify.md: framework
+    singularity/templates/poc-workflow/impact-analysis.md: framework
+    singularity/templates/poc-workflow/intake.md: framework
+    singularity/templates/poc-workflow/publication-review.md: framework
+    singularity/templates/poc-workflow/test-generation.md: framework
+    singularity/templates/poc-workflow/ui-exploration.md: framework
+    singularity/templates/poc-workflow/validation.md: framework
+    singularity/templates/quick-fix/implement.md: framework
+    singularity/templates/quick-fix/verify.md: framework
+    singularity/templates/spec-code-test-loop/conformance.md: framework
+    singularity/templates/spec-code-test-loop/specification.md: framework
+    singularity/templates/spec-code-test-loop/testing.md: framework
+    singularity/templates/spec-driven/convergence.md: framework
+    singularity/templates/spec-driven/plan.md: framework
+    singularity/templates/spec-driven/release.md: framework
+    singularity/templates/spec-driven/spec.md: framework
