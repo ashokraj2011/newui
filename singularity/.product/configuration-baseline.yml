@@ -1,7 +1,7 @@
 format: singularity-flow-configuration-baseline/v1
 product:
   version: 0.9.0
-  revision: 499b2656353c8741f92a770410660750a6f356a3
+  revision: 2577c98303f3dfab85e1360eabd7138d3a8eca61
 workflow:
   version: 2
   inputsMode: enforce
@@ -726,8 +726,11 @@ workflow:
     spec-code-test-loop:
       label: Spec → code → Playwright review
       description: A specification-first Story with Code publication, governed
-        Playwright browser observations, and bounded human-directed rework; MCP
-        observations never replace structured test receipts or approval.
+        Playwright browser observations, and bounded human-directed rework. The
+        optional BRL foundation can inspect or plan the exact retained Code
+        Candidate, but runs fail closed without its approved runner; MCP or BRL
+        observations never replace structured test receipts, Testing,
+        publication, or approval.
       phases:
         - specification
         - implementation
