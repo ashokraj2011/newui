@@ -2359,10 +2359,17 @@ workTypes:
         implementation: planning
     spec:
       mode: enforce
+      coverage: enforce
     templateOverrides:
       specification: spec-driven/spec.md
       planning: spec-driven/plan.md
       convergence: spec-driven/convergence.md
+    sourceReview:
+      mode: enforce
+      phases:
+        - specification
+        - planning
+      reviewerAgent: sflow-source-reviewer
 worldModel:
   views:
     - business
