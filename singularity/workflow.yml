@@ -2118,6 +2118,10 @@ workTypes:
       release:
         inputs:
           - verification
+    documents:
+      allowedPhases:
+        - specification
+        - planning
   spec-code-test-loop:
     label: Spec → code → Playwright review
     description: A specification-first Story with Code publication, governed
@@ -2370,6 +2374,10 @@ workTypes:
         - specification
         - planning
       reviewerAgent: sflow-source-reviewer
+    documents:
+      allowedPhases:
+        - specification
+        - planning
 worldModel:
   views:
     - business
