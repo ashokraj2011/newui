@@ -1428,7 +1428,7 @@ planning:
   promptSource: singularity/prompts/copilot-planning.md
   maxContextBytes: 1048576
 repositoryReadiness:
-  requiredBeforeStory: false
+  requiredBeforeStory: true
   dependencyHydration: when-detected
   build: off
   structuredTests: required-for-code
