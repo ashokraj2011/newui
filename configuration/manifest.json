@@ -3,15 +3,15 @@
   "layout": "canonical-paths",
   "source": {
     "branch": "sflow/config",
-    "commit": "b1a0bf97d5cb62a14a49fa0cf5af296ee7ef029b"
+    "commit": "562df97fb4f705a100a92be82b7fa2369ed7d140"
   },
   "history": {
-    "branch": "sflow/config-history/b1a0bf97d5cb62a14a49fa0cf5af296ee7ef029b",
-    "commit": "b1a0bf97d5cb62a14a49fa0cf5af296ee7ef029b"
+    "branch": "sflow/config-history/562df97fb4f705a100a92be82b7fa2369ed7d140",
+    "commit": "562df97fb4f705a100a92be82b7fa2369ed7d140"
   },
   "product": {
     "version": "0.9.0",
-    "revision": "d1dd5cc87a9d41316971bb03fbaa4298dfff1e54"
+    "revision": "735d5de6f1a863e3a9fefccb298000e365c59ff5"
   },
   "files": {
     ".github/agents/architect.agent.md": "184ad9effaad2977008687601def19a0677bb72c6a02365ef81b945f54ae6443",
@@ -137,7 +137,7 @@
     "singularity/templates/spec-driven/spec.md": "55b0d6c4c9aa5ba19739493825f6c993f03d63bed9e1a5e2bb7d5c099b8b91bb",
     "singularity/templates/starter-packs/skp-team-notes/draft-input.json": "fbc136911e7dfecf14be06091b6d759770fa72c133c39de74710511bfee57410",
     "singularity/templates/starter-packs/skp-team-notes/README.md": "ab3e66d1654df81922a6022c491ac85868cb3b644e0eace77c4f9089c4f599ea",
-    "singularity/workflow.yml": "261589e21e04861be68ecb5e0a53ae90b9b670e0d748ec5d64082166008627f0"
+    "singularity/workflow.yml": "376fc3cf9e941b35e7837afe4718f205a6cffd2b31559e133850a95db964f3fc"
   },
   "assets": {
     ".github/agents/architect.agent.md": {
@@ -756,8 +756,8 @@
       "mode": "100644"
     },
     "singularity/workflow.yml": {
-      "sha256": "261589e21e04861be68ecb5e0a53ae90b9b670e0d748ec5d64082166008627f0",
-      "object": "3c115144efb7d738f50d8b9aed22b0490fd37c97",
+      "sha256": "376fc3cf9e941b35e7837afe4718f205a6cffd2b31559e133850a95db964f3fc",
+      "object": "fe40e5c2fbad0daf7d5e5255bcb4e70d6297b960",
       "mode": "100644"
     }
   }
