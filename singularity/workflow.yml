@@ -1427,12 +1427,15 @@ planning:
   promptSource: singularity/prompts/copilot-planning.md
   maxContextBytes: 1048576
 repositoryReadiness:
-  requiredBeforeStory: true
+  requiredBeforeStory: false
   dependencyHydration: when-detected
   build: off
   structuredTests: required-for-code
   applicationStart: off
   receiptScope: git-private-exact-base
+  baselinePolicy: choice
+  testRuntime:
+    nodeOptions: []
 sequenceGates:
   default: soft
   completion: hard
